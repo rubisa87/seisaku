@@ -14,11 +14,11 @@
     </p1>
     &nbsp &nbsp 
     <p1 class = "top2">
-        <a href="self.php">従業員</a>
+        <?php $page1= "self"; echo "<a href='self_login.php?page=$page1'>従業員</a>"; ?>
     </p1>
 &nbsp&nbsp
     <p1 class = "top3">
-        <a href="staffdata.php">管理人</a>
+        <?php $page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
     </p1>
 </p>
 <br><br>

@@ -14,21 +14,19 @@
     </p1>
     &nbsp &nbsp 
     <p1 class = "top2">
-        <a href="self">従業員</a>
+        <?php $page1= "self"; echo "<a href=''>従業員</a>"; ?>
     </p1>
 &nbsp&nbsp
     <p1 class = "top3">
-        <a href="staffdata.php">管理人</a>
+        <?php $page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
     </p1>
 </p>
 <br>
 </p>
 
-<!-- </h5> -->
 <h2><br>
     個人情報
     </h2>
-    <p>
 <table border="1" >
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th></tr>
 <?php

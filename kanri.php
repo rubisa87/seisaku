@@ -18,21 +18,17 @@
     </p1>
 &nbsp&nbsp
     <p1 class = "top3">
-        <a href="staffdata.php">管理人</a>
+        <a href="kanri.php">管理人</a>
     </p1>
 </p>
 <br>
 </p>
 
-<!-- </h5> -->
 <h2><br>
     従業員情報一覧
     </h2>
-    <p>
-<input  class="shinki radius" type= "submit" name="shinki" value="新規登録">
- </p>
+<!-- <input  class="shinki radius" type= "submit" name="shinki" value="新規登録"> -->
 <table border="1">
-<br>
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>操作</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
