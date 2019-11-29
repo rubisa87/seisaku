@@ -14,7 +14,7 @@
     </p1>
     &nbsp &nbsp 
     <p1 class = "top2">
-        <a href="">従業員</a>
+        <a href="self.php">従業員</a>
     </p1>
 &nbsp&nbsp
     <p1 class = "top3">
