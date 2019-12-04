@@ -9,7 +9,6 @@ html{
     /*max-width: 500px;*/
   margin: 2px solid red;/*canh le ben ngoai cho tat ca thanh phan bao nhieu px*/
   padding: 2px 0;/*canh le ben trong thanh phan*/
-
 }
 
 
@@ -51,7 +50,7 @@ h5 {
 }
 table {
   width: 1200px; 
-text-align: center;
+/*text-align: center;*/
   margin: 15px auto;
   padding: 0;
   background-color: #89cfef;
@@ -60,6 +59,19 @@ text-align: center;
 .table{
   width: 500px;
    font-size: 12px;
+    position:absolute;
+  left: 13%;
+}
+.mess{
+  width: 500px;
+   font-size: 12px;
+    position:absolute;
+  right: 13%;
+}
+
+.messpos{
+      position:absolute;
+  right: 13%;
 }
 .center{
   text-align: center;

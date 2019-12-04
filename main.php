@@ -14,16 +14,25 @@
     </p1>
     &nbsp &nbsp 
     <p1 class = "top2">
-        <?php $page1= "self"; echo "<a href='self_login.php?page=$page1'>従業員</a>"; ?>
+       <a href='self.php'>従業員</a>
+
+        <?php //$page1= "self"; echo "<a href='self_login.php?page=$page1'>従業員</a>"; ?>
     </p1>
 &nbsp&nbsp
     <p1 class = "top3">
-        <?php $page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
+       <a href='kanri.php'>管理人</a>
+
+        <?php //$page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
     </p1>
 </p>
 <br><br>
 
 <?php
+session_start();
+
+if (isset($_POST['destroy'])){
+    session_destroy();
+}
     function sw_get_current_weekday() {
         date_default_timezone_set('Asia/tokyo');
         $weekday = date("l");
@@ -189,7 +198,7 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
         <input  class="butsize radius" type= "" name="kksrout" value="<?php echo $in2 ?>">
         <input  class="butsize radius" type= "" name="tkout" value="<?php echo $out2 ?>">
         <br><br><br><br>
-         <input  class="butsize radius" type= "submit" name="" value="終了">
+         <input  class="butsize radius" type= "submit" name="destroy" value="終了">
 </form>
 
     </h2>

@@ -23,6 +23,16 @@
 </p>
 <br>
 </p>
+<?php
+session_start();
+ if ($_SESSION['kanri']==False){
+    //③SESSIONの「error2」に「ログインしてください」と設定する。
+    //④ログイン画面へ遷移する。
+// }
+    $_SESSION['error2'] ="ログインしてください";
+    header("Location: self_login.php?page=kanri");//④ログイン画面へ遷移する。
+} 
+  ?>
 
 <h2><br>
     従業員情報一覧
@@ -56,8 +66,8 @@
 </table>
 
 </table>
-<h2><br>
-    出勤実績
+<h2 ><br>
+    出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbspメッセージ
     </h2>
 <table border="1" class="table" >
 <tr><th>日付</th><th>コード</th><th>氏名</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
@@ -86,5 +96,30 @@
   
 ?>
 </table>
+
+<table border="1" class="mess" >
+<tr><th>氏名</th><th>時間</th><th　style="width:300px">内容</th><th>状態</th></tr>
+<?php
+  $pdo = new PDO("mysql:dbname=seisaku", "root");
+   $stmt = $pdo->query('SELECT * FROM messenger WHERE tousercode=3');
+            // $stmt->execute(array($passcode));
+ // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
+  while ($row = $stmt->fetch()) {
+    $id = htmlspecialchars($row['id']);
+    $from = htmlspecialchars($row['fromusercode']);
+    $content = htmlspecialchars($row['content']);
+    $time = htmlspecialchars($row['time']);
+    $status = htmlspecialchars($row['status']);
+
+    
+
+    // echo "<tr><td>$date</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td></tr>";
+
+    // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";
+  }
+  
+?>
+</table>
 </body>
 </html>
+<!-- style="width:300px" -->

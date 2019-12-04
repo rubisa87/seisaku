@@ -8,11 +8,14 @@
 </head>
 <body>
 <?php 
+    session_start();
+
 $page=@$_GET['page']; 
 
 $passcode=0;
 $pass="";
 $errormess="";
+
 if (isset($_POST["login"])) {
  $page = $_POST["page"];
     if (@($_POST["passcode"]) and @($_POST["pass"]) ) {
@@ -23,9 +26,10 @@ if (isset($_POST["login"])) {
    $stmt = $pdo->prepare('SELECT * FROM staffdata WHERE passcode = ?');
             $stmt->execute(array($passcode));
             $rows = $stmt->fetch();
-
+echo $rows['password'];
 if($page=="kanri"){
     if($passcode =="anh" &$pass =="8793"){
+    $_SESSION['kanri']=True;
 header("Location: kanri.php");
            exit();
     }else{
@@ -34,6 +38,11 @@ $errormess=$errormess."アクセス権限無効";
     } 
 
 }else if(($page=="self")&($pass==@$rows["password"])){
+            $_SESSION['login']=True;
+            $_SESSION['code']=$passcode;
+            if($passcode==3){
+                $_SESSION['kanri']=True;
+            }
         header("Location: self.php");
         exit();
     }else{
@@ -75,7 +84,8 @@ if (!empty($_SESSION['error2'])) {
 <br><br><br><br><br>
     <div class="login">
         <h2>ログイン</h2>
-        <?php echo @$errormess;?>
+        <?php echo @$errormess;
+        // echo $page;?>
         <form action="self_login.php" method="post" id="">
             <p>
                 <input type='text' name="passcode" size='14' placeholder="Passcode">

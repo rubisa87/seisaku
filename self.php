@@ -14,15 +14,25 @@
     </p1>
     &nbsp &nbsp 
     <p1 class = "top2">
-        <?php $page1= "self"; echo "<a href=''>従業員</a>"; ?>
-    </p1>
+      <a href="self.php">従業員</a>
+    </p1>    </p1>
 &nbsp&nbsp
     <p1 class = "top3">
-        <?php $page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
+        <a href="kanri.php">管理人</a>
     </p1>
 </p>
 <br>
 </p>
+<?php
+session_start();
+ if ($_SESSION['login']==False){
+    //③SESSIONの「error2」に「ログインしてください」と設定する。
+    //④ログイン画面へ遷移する。
+// }
+    $_SESSION['error2'] ="ログインしてください";
+    header("Location: self_login.php?page=self");//④ログイン画面へ遷移する。
+} 
+  ?>
 
 <h2><br>
     個人情報
@@ -30,9 +40,12 @@
 <table border="1" >
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th></tr>
 <?php
+$passcode=@$_SESSION['code'];
   $pdo = new PDO("mysql:dbname=seisaku", "root");
-  $st = $pdo->query("SELECT * FROM staffdata where passcode =3");
-  while ($row = $st->fetch()) {
+   $stmt = $pdo->prepare('SELECT * FROM staffdata WHERE passcode = ?');
+            $stmt->execute(array($passcode));
+  //$st = $pdo->query("SELECT * FROM staffdata where passcode =$passcode");
+  while ($row = $stmt->fetch()) {
     $passcode = htmlspecialchars($row['passcode']);
     $name = htmlspecialchars($row['name']);
     $datebirth = htmlspecialchars($row['datebirth']);
@@ -54,14 +67,16 @@
 ?>
 </table>
 <h2><br>
-    出勤実績
+    出勤実績   
     </h2>
 <table border="1" class="table" >
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
-  $st = $pdo->query("SELECT * FROM kintaidata where passcode= 3");
-  while ($row = $st->fetch()) {
+   $stmt = $pdo->prepare('SELECT * FROM kintaidata WHERE passcode = ?');
+            $stmt->execute(array($passcode));
+ // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
+  while ($row = $stmt->fetch()) {
     $date = htmlspecialchars($row['date']);
     $sk = htmlspecialchars($row['sk']);
     $kkks = htmlspecialchars($row['kkks']);
@@ -81,5 +96,6 @@
   
 ?>
 </table>
+
 </body>
 </html>
