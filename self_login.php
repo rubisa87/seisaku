@@ -7,6 +7,24 @@
     <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
 </head>
 <body>
+<!-- <h5> -->
+<p class="top">
+    <p1 class = "top1">
+       <a href="main.php">打刻</a>
+    </p1>
+    &nbsp &nbsp 
+    <p1 class = "top2">
+        <a href="self.php">従業員</a>
+    </p1>
+&nbsp&nbsp
+    <p1 class = "top3">
+        <a href="kanri.php">管理人</a>
+    </p1>
+</p>
+<br>
+</p>
+<br><br><br><br><br>
+
 <?php 
     session_start();
 
@@ -28,7 +46,7 @@ if (isset($_POST["login"])) {
             $rows = $stmt->fetch();
 echo $rows['password'];
 if($page=="kanri"){
-    if($passcode =="anh" &$pass =="8793"){
+    if($passcode =="mise" &$pass =="8793"){
     $_SESSION['kanri']=True;
 header("Location: kanri.php");
            exit();
@@ -67,21 +85,8 @@ if (!empty($_SESSION['error2'])) {
 }
 
 ?>
-<p class="top">
-    <p1 class = "top1">
-       <a href="main.php">打刻</a>
-    </p1>
-    &nbsp &nbsp 
-    <p1 class = "top2">
-        <?php $page1= "self"; echo "<a href='self_login.php?page=$page1'>従業員</a>"; ?>
-        <!-- echo "<a href='user_update.php?name=$name '>登録情報変更</a>"; -->
-    </p1>
-&nbsp&nbsp
-    <p1 class = "top3">
-        <?php $page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
-    </p1>
-</p>
-<br><br><br><br><br>
+
+
     <div class="login">
         <h2>ログイン</h2>
         <?php echo @$errormess;

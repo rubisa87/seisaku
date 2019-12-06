@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <title> 出勤管理システム</title>
 <link rel="stylesheet" href="shop.css">
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
 </head>
 <body>
-<h5>
+<!-- <h5> -->
 <p class="top">
     <p1 class = "top1">
        <a href="main.php">打刻</a>
@@ -23,9 +23,20 @@
 </p>
 <br>
 </p>
+<?php
+session_start();
+ if ($_SESSION['kanri']==False){
+    //③SESSIONの「error2」に「ログインしてください」と設定する。
+    //④ログイン画面へ遷移する。
+// }
+    $_SESSION['error2'] ="ログインしてください";
+    header("Location: self_login.php?page=kanri");//④ログイン画面へ遷移する。
+} 
+  ?>
 
-<br>
-</h5>
+<h2><br>
+    情報修正
+    </h2>
 
 <?php
   $code = $_GET['code'];
@@ -49,23 +60,24 @@
 <table border="1">
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>操作</th></tr>
 <tr>
-  <td><input type="text" name="passcode" value="<?php echo $code ?>"></td>
+  <td><input type="text" style="width:80px" name="passcode" value="<?php echo $code ?>"></td>
   <td><input type="text" name="name" value="<?php echo $row["name"] ?>"></td>
-  <td><input type="text" name="datebirth" value="<?php echo $row["datebirth"] ?>"></td>
-  <td><input type="text" name="tell" value="<?php echo $row["tell"] ?>"></td>
-  <td><input type="text" name="address" value="<?php echo $row["address"] ?>"></td>
-  <td><input type="text" name="incomdate" value="<?php echo $row["incomdate"] ?>"></td>
-  <td><input type="text" name="chii" value="<?php echo $row["chii"] ?>"></td>
-  <td><input type="text" name="jikyuu" value="<?php echo $row["jikyuu"] ?>"></td>
-  <td><input type="text" name="sekinin" value="<?php echo $row["sekinin"] ?>"></td>
-  <td><input type="text" name="teate" value="<?php echo $row["teate"] ?>"></td>
-  <td><input type="text" name="koutsuuhi" value="<?php echo $row["koutsuuhi"] ?>"></td>
+  <td><input type="text" size ="7" name="datebirth" value="<?php echo $row["datebirth"] ?>"></td>
+  <td><input type="text" size ="9" name="tell" value="<?php echo $row["tell"] ?>"></td>
+  <td><input type="text" size ="35" name="address" value="<?php echo $row["address"] ?>"></td>
+  <td><input type="text" size ="7" name="incomdate" value="<?php echo $row["incomdate"] ?>"></td>
+  <td><input type="text" size ="6" name="chii" value="<?php echo $row["chii"] ?>"></td>
+  <td><input type="text" style="width:70px" name="jikyuu" value="<?php echo $row["jikyuu"] ?>"></td>
+  <td><input type="text" size ="7" name="sekinin" value="<?php echo $row["sekinin"] ?>"></td>
+  <td><input type="text" size ="4" name="teate" value="<?php echo $row["teate"] ?>"></td>
+  <td><input type="text" size ="3" name="koutsuuhi" value="<?php echo $row["koutsuuhi"] ?>"></td>
   <td><input type="hidden" name="oldcode" value="<?php echo $code ?>">
   <input type="submit"></td>
 </tr>
 </table>
 
 </form>
+
 
 
 <!-- パスコード<br>

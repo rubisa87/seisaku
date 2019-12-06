@@ -65,6 +65,7 @@ $passcode=@$_SESSION['code'];
   }
   
 ?>
+
 </table>
 <h2><br>
     出勤実績   
@@ -73,9 +74,9 @@ $passcode=@$_SESSION['code'];
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
-   $stmt = $pdo->prepare('SELECT * FROM kintaidata WHERE passcode = ?');
-            $stmt->execute(array($passcode));
- // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
+   // $stmt = $pdo->prepare('SELECT * FROM kintaidata WHERE passcode = ?');
+            // $stmt->execute(array($passcode));
+ $stmt = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
   while ($row = $stmt->fetch()) {
     $date = htmlspecialchars($row['date']);
     $sk = htmlspecialchars($row['sk']);
@@ -96,6 +97,32 @@ $passcode=@$_SESSION['code'];
   
 ?>
 </table>
+  </table>
 
+<table border="1" class="mess" >
+<tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
+<?php
+  $pdo = new PDO("mysql:dbname=seisaku", "root");
+   $stmt = $pdo->query("SELECT * FROM messenger WHERE tousercode=$passcode");
+            // $stmt->execute(array($passcode));
+ // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
+  while ($row = $stmt->fetch()) {
+    $id = htmlspecialchars($row['id']);
+    $fromu = htmlspecialchars($row['fromusercode']);
+    $content = htmlspecialchars($row['content']);
+    $time = htmlspecialchars($row['time']);
+    $status = htmlspecialchars($row['status']);
+$ndb = $pdo->query("SELECT * FROM staffdata WHERE passcode= $fromu");
+    $a =$ndb->fetch();
+
+
+     echo "<tr><td>".$a['name']."</td><td>$time</td><td>$content</td><td>$status</td></tr>";
+
+  }
+  
+?>
+</table>
+</body>
+</html>
 </body>
 </html>
