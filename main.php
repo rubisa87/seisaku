@@ -226,7 +226,11 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
     document.querySelector('body').addEventListener("load", startTime());
     
 </script>
+<!-- <footer>
+    <p><small>Copyright 2019 Nora Team All rights reserved.</small></p>
+</footer> -->
 </body>
+
 </html>
 
 <!-- INSERT INTO `kintaidata`( `date`, `passcode`, `name`, `sk`,) VALUES (CURRENT_DATE,'100','TRAN DUC ANH',CURRENT_TIME); -->

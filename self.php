@@ -97,8 +97,26 @@ $passcode=@$_SESSION['code'];
   
 ?>
 </table>
-  </table>
+<?php 
+if(isset($_POST['soushin'])){
+$from=$_POST['from'];
+  $content=$_POST['content'];
+  $name=$_POST['name'];
+    echo "from:".$from;
+  echo "<br>content:".$content;
+$st = $pdo->prepare("SELECT * FROM staffdata where name =?");
+$st->execute(array($name));
+$row = $st->fetch();
+$to=$row['passcode'];
+echo "<br>to:".$to;
+$stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, status) VALUES (?,?,?,'未読')");
 
+            $stmt->execute(array($from,$to,$content));
+
+}
+
+
+  ?>
 <table border="1" class="mess" >
 <tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
@@ -121,6 +139,26 @@ $ndb = $pdo->query("SELECT * FROM staffdata WHERE passcode= $fromu");
   }
   
 ?>
+<tr><form method="post">
+<td><select name="name" style ="font-size: 9px"
+>
+            <?php
+$pdo = new PDO("mysql:dbname=seisaku", "root");
+   $stmt = $pdo->query("SELECT * FROM staffdata");
+while ($row = $stmt->fetch()) {
+  $code=$row['passcode'];
+  $name=$row['name'];
+                echo "<option>$name</option>";
+                // echo "<input type='hidden' name='code' value=".$code.">";
+              }
+            ?>
+          </select></td>
+<td><input type="hidden" name="from" value="<?php echo $_SESSION['code'];  ?>">
+  <!-- <input type="hidden" name="code" value="<?php echo $code;  ?>"> --></td>
+<td><textarea rows="3" cols="40" name="content">
+</textarea></td>
+<td><button type = 'submit' formmethod='POST' name ='soushin' >送信</button></td></form>
+</tr>
 </table>
 </body>
 </html>

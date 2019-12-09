@@ -62,17 +62,18 @@ $passcode1=$passcode+1;
     // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";
   }
   if(isset($_POST['shinki'])){
-echo "<form><tr><td><input type='text' style='width:80px' name='passcode' placeholder='' value='$passcode1'></td>
+echo "<form><tr><td><input type='text' style='width:80px' name='passcode' placeholder='' value='$passcode1' disabled></td>
 <td><input type='text' style='width:80px' name='name' placeholder='名前' value=''></td>
-<td><input type='text' style='width:80px' name='datebirth' placeholder='生年月日' value=''></td>
-<td><input type='text' style='width:80px' name='tell' placeholder='電話番' value=''></td>
+<td><input type='text' style='width:80px' name='datebirth' placeholder='年ー月ー日' value=''></td>
+<td><input type='text' style='width:80px' name='tell' placeholder='電話番号' value=''></td>
 <td><input type='text' style='width:180px' name='address' placeholder='住所' value=''></td>
-<td><input type='text' style='width:80px' name='incomdate' placeholder='入社日' value=''></td>
+<td><input type='text' style='width:80px' name='incomdate' placeholder='年ー月ー日' value=''></td>
 <td><input type='text' style='width:80px' name='chii' placeholder='地位' value=''></td>
 <td><input type='text' style='width:80px' name='jikyuu' placeholder='時給' value=''></td>
-<td><input type='text' style='width:80px' name='sekinin' placeholder='責任手当' value=''></td>
-<td><input type='text' style='width:80px' name='teate' placeholder='手当' value=''></td>
-<td><input type='text' style='width:80px' name='koutsuuhi' placeholder='交通費' value=''></td>
+<td><input type='text' style='width:80px' name='sekinin' placeholder='責任手当' value='0'></td>
+<td><input type='text' style='width:80px' name='teate' placeholder='手当' value='0'></td>
+<td><input type='text' style='width:80px' name='koutsuuhi' placeholder='交通費' value='0'></td>
+<td><input type='text' style='width:80px' name='password' placeholder='password' value=''></td>
 
 </tr>"; 
 echo "<tr><td><button type = 'submit' formmethod='POST' name ='touroku' >登録</button></tr></form>";
@@ -83,6 +84,22 @@ echo "<tr><td><button type = 'submit' formmethod='POST' name ='touroku' >登録<
  if(isset($_POST['touroku'])){
 echo "lay dc nut dki...............";
 echo $_POST['name'];//=====================den doan nay, con lai lam not phan ket noi dbs va chay lai trang=====
+echo $_POST['datebirth'];
+echo $_POST['tell'];
+echo $_POST['address'];
+echo $_POST['incomdate'];
+echo $_POST['chii'];
+echo $_POST['jikyuu'];
+echo $_POST['sekinin'];
+echo $_POST['teate'];
+echo $_POST['koutsuuhi'];
+$stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,incomdate,chii,jikyuu,sekinin,teate,koutsuuhi,password) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+
+            $stmt->execute(array($_POST['name'],$_POST['datebirth'],$_POST['tell'],$_POST['address'],$_POST['incomdate'],$_POST['chii'],$_POST['jikyuu'],$_POST['sekinin'],$_POST['teate'],$_POST['koutsuuhi'],$_POST['password']));
+
+
+
+
  }
   
 ?>
@@ -120,7 +137,26 @@ echo $_POST['name'];//=====================den doan nay, con lai lam not phan ke
   
 ?>
 </table>
+<?php 
+if(isset($_POST['soushin'])){
+$from=$_POST['from'];
+  $content=$_POST['content'];
+  $name=$_POST['name'];
+    echo "from:".$from;
+  echo "<br>content:".$content;
+$st = $pdo->prepare("SELECT * FROM staffdata where name =?");
+$st->execute(array($name));
+$row = $st->fetch();
+$to=$row['passcode'];
+echo "<br>to:".$to;
+$stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, status) VALUES (?,?,?,'未読')");
 
+            $stmt->execute(array($from,$to,$content));
+
+}
+
+
+  ?>
 <table border="1" class="mess" >
 <tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
@@ -143,12 +179,25 @@ $ndb = $pdo->query("SELECT * FROM staffdata WHERE passcode= $fromu");
   }
   
 ?>
-<tr>
-<td><input type='text' style='width:55px' name='name' placeholder='宛先' value=''></td>
-<td></td>
-<td><textarea rows="3" cols="40">
+<tr><form method="post">
+<td><select name="name" style ="font-size: 9px"
+>
+            <?php
+$pdo = new PDO("mysql:dbname=seisaku", "root");
+   $stmt = $pdo->query("SELECT * FROM staffdata");
+while ($row = $stmt->fetch()) {
+  $code=$row['passcode'];
+  $name=$row['name'];
+                echo "<option>$name</option>";
+                // echo "<input type='hidden' name='code' value=".$code.">";
+              }
+            ?>
+          </select></td>
+<td><input type="hidden" name="from" value="<?php echo "3";  ?>">
+  <!-- <input type="hidden" name="code" value="<?php echo $code;  ?>"> --></td>
+<td><textarea rows="3" cols="40" name="content">
 </textarea></td>
-<td><form><button type = 'submit' formmethod='POST' name ='soushin' >送信</button></form></td>
+<td><button type = 'submit' formmethod='POST' name ='soushin' >送信</button></td></form>
 </tr>
 </table>
 </body>

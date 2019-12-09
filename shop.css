@@ -1,8 +1,10 @@
+@import url(common.css);
+
 html{
   /*font-family: "Times New Roman", "游明朝", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;*/
   font-family: "arial";
-    /*background-image: url("back1.jpg");*/
-  /*background: url(back1.jpg) no-repeat center center fixed; */
+    /*background-image: url(../images/header.png);*/
+  /*background: url(header.png) no-repeat center center fixed; */
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -16,7 +18,18 @@ body {
   background-color:#dee;
   /*font-size: 22px;*/
   color: #222;
+ background-image:url();
+
 }
+
+footer p {
+  margin-bottom: 0;
+  padding: 14px 0 14px 0;
+  background-image: url(../images/footer_bg1.png);
+  background-repeat: repeat-x;
+  text-align: center;
+}
+
 a:link, a:visited {color: #844;}
 a:hover {color: #faa;}
 p,form {
