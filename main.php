@@ -62,7 +62,7 @@ if (isset($_POST['destroy'])){
         }
         // echo $weekday.', '.date('d/m/Y H:i:s');
         echo $weekday.', '.date('Y年m月d日');
-        echo date('Y')-date('m');
+       // echo date('Y')- date('m');
     }
 ?>
 

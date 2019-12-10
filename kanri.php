@@ -108,10 +108,10 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
 
 </table>
 <h2 ><br>
-    出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbspメッセージ
+    出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspメッセージ
     </h2>
 <table border="1" class="table" >
-<tr><th>日付</th><th>コード</th><th>氏名</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
+<tr><th>日付</th><th>コード</th><th>氏名</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th><th>操作</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
   $st = $pdo->query("SELECT * FROM kintaidata ");
@@ -129,7 +129,7 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
  if($sk=="00:00:00"){ $sk="";}
    
 
-    echo "<tr><td>$date</td><td>$passcode</td><td>$name</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td></tr>
+    echo "<tr><td>$date</td><td>$passcode</td><td>$name</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td><td><a href='user_update.php?code=$passcode '>修正</a></td></tr>
 ";
 
     // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";
