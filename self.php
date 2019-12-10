@@ -23,6 +23,30 @@
 </p>
 <br>
 </p>
+<table background="http://maytinhhtl.com/images/code/thongbaohv.gif" width="758px" height="40px" />
+<tr>
+<td valign="top" >
+<div style="width:1100px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
+<marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
+<strong>
+    おしらせ：
+<a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表があります</a> 
+
+<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月１６日最終発表会が行われます  </a>  
+</strong>
+</marquee>
+</div>
+</td></tr>
+</table>
+
+<script type="text/javascript" language="JavaScript" src="http://www.informatik.uni-leipzig.de/~duc/amlich/JavaScript/amlich-hnd.js">
+</script>
+<script language="JavaScript">
+<!--
+setOutputSize("small");
+document.writeln(printSelectedMonth());
+-->
+</script>
 <?php
 session_start();
  if ($_SESSION['login']==False){

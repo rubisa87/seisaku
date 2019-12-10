@@ -61,6 +61,14 @@ h5 {
 
 
 }
+/*footer{
+            background-color:#ddd;
+            font-size:18px;
+            text-align:center;
+            padding:15px;
+                position:absolute;
+              bottom: 0px;
+        }*/
 table {
   width: 1200px; 
 /*text-align: center;*/
@@ -244,7 +252,7 @@ th, td {
   height: 3px;
   width: 350px;
   /*background-color: blue;*/
-  position:absolute;
+  position:fixed;
 left:60%;
 
 }
