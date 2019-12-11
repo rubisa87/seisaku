@@ -70,7 +70,12 @@ h5 {
               bottom: 0px;
         }*/
 table {
-  width: 1200px; 
+    padding: 0;
+  border-collapse: collapse;
+
+}
+.maintable{
+width: 1200px; 
 /*text-align: center;*/
   margin: 15px auto;
   padding: 0;
@@ -89,6 +94,14 @@ th {
 td{
     background-color: #99efef;
 
+}
+.calendar{
+  width: 500px;
+  height: 500px;
+   font-size: 9px;
+    position:absolute;
+  right: 0%;
+  background-color: #ee5555;
 }
 .mess{
   width: 450px;
@@ -110,6 +123,8 @@ td{
 th, td {
   margin: 0;
   /*padding: 6px 16px;*/
+
+
   border-bottom: 3px solid #bab;
 }
 .goods {
@@ -279,4 +294,47 @@ background-color: #fc0;
 }.top4{
   /*position:absolute;*/
 background-color: #0cf;  
+}
+
+ul#menu, ul#menu ul#sub {
+    padding:0;
+    margin: 0;
+}
+ul#menu li {
+     list-style-type: none;    /* code này để bỏ các dấu chấm tròn*/
+     float: left;    /* code này để menu dàn hàng ngang*/
+     margin-right: 0px;    /* tạo lề cho các menu*/
+}
+ul#menu li a {
+text-decoration: none;
+background-color: #900;
+padding: 5px;
+color: white;
+}
+ul#menu li {
+positon: relative;
+}
+ul#menu li ul#sub {
+display: none;
+position: absolute;
+width: 50px;
+}
+ul#menu li ul#sub li {
+margin-top: 10px;
+margin-bottom: 5px;
+}
+ul#menu li:hover ul#sub {
+display: block;
+}
+ul#menu li {
+positon: relative;
+} 
+ul#menu li ul#sub {
+display: none;
+position: absolute;
+width: 100px;
+}
+ul#menu, ul#menu ul#sub {
+    padding:0;
+    margin: 0;
 }

@@ -5,6 +5,18 @@
 <title> 出勤管理システム</title>
 <link rel="stylesheet" href="shop.css">
     <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- <title>jQuery UI Datepicker - Default functionality</title> -->
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <!-- // <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <!-- // <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+   <script>
+  // $( function() {
+  //   $( "#datepicker1" ).datepicker();
+  //   $( "#datepicker2" ).datepicker();
+  // } );
+  // </script>
 </head>
 <body>
 <!-- <h5> -->
@@ -38,7 +50,7 @@ session_start();
     従業員情報一覧
     </h2>
 <!-- <input  class="shinki radius" type= "submit" name="shinki" value="新規登録"> -->
-<table border="1">
+<table border="1" class="maintable">
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>操作</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
@@ -97,11 +109,21 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
 
             $stmt->execute(array($_POST['name'],$_POST['datebirth'],$_POST['tell'],$_POST['address'],$_POST['incomdate'],$_POST['chii'],$_POST['jikyuu'],$_POST['sekinin'],$_POST['teate'],$_POST['koutsuuhi'],$_POST['password']));
 
-
-
-
  }
   
+
+if(!isset($_POST["datesearch"])){
+
+  $st = $pdo->query("SELECT * FROM kintaidata ");
+}else{
+
+$kara =$_POST["kara"];
+$made =$_POST["made"];
+echo $kara;
+echo $made;
+$st = $pdo->prepare("SELECT * FROM kintaidata WHERE date>=? AND date<=?");
+$st->execute(array($kara,$made));
+}
 ?>
 
 </table>
@@ -110,12 +132,18 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
 <h2 ><br>
     出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspメッセージ
     </h2>
+      <form method="POST">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <!-- 参照:<input type="date" id="datepicker1" name="kara">から<input type="date" id="datepicker2" name="made">まで <input type="submit" name="datesearch" value="検索"> -->
+        参照:<input type="date"  name="kara">から<input type="date" name="made">まで <input type="submit" name="datesearch" value="検索"></form>
+
 <table border="1" class="table" >
 <tr><th>日付</th><th>コード</th><th>氏名</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th><th>操作</th></tr>
 <?php
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
-  $st = $pdo->query("SELECT * FROM kintaidata ");
+ 
+
   while ($row = $st->fetch()) {
+
+        $id=htmlspecialchars($row['id']);
     $date = htmlspecialchars($row['date']);
     $passcode = htmlspecialchars($row['passcode']);
     $name = htmlspecialchars($row['name']);
@@ -129,7 +157,7 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
  if($sk=="00:00:00"){ $sk="";}
    
 
-    echo "<tr><td>$date</td><td>$passcode</td><td>$name</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td><td><a href='user_update.php?code=$passcode '>修正</a></td></tr>
+    echo "<div><tr><td>$date</td><td><input type='hidden' name='id' value=$id> $passcode</td><td>$name</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td><td><a href='kintai_edit.php?id=$id '>修正</a></td></tr>
 ";
 
     // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";

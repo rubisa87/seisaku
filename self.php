@@ -5,6 +5,18 @@
 <title> 出勤管理システム</title>
 <link rel="stylesheet" href="shop.css">
     <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
 </head>
 <body>
 <!-- <h5> -->
@@ -21,12 +33,11 @@
         <a href="kanri.php">管理人</a>
     </p1>
 </p>
-<br>
-</p>
+</p><br><br>
 <table background="http://maytinhhtl.com/images/code/thongbaohv.gif" width="758px" height="40px" />
 <tr>
 <td valign="top" >
-<div style="width:1100px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
+<div style="width:1230px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
 <marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
 <strong>
     おしらせ：
@@ -39,14 +50,6 @@
 </td></tr>
 </table>
 
-<script type="text/javascript" language="JavaScript" src="http://www.informatik.uni-leipzig.de/~duc/amlich/JavaScript/amlich-hnd.js">
-</script>
-<script language="JavaScript">
-<!--
-setOutputSize("small");
-document.writeln(printSelectedMonth());
--->
-</script>
 <?php
 session_start();
  if ($_SESSION['login']==False){
@@ -58,10 +61,10 @@ session_start();
 } 
   ?>
 
-<h2><br>
+<h2>
     個人情報
     </h2>
-<table border="1" >
+<table border="1" class="maintable" >
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th></tr>
 <?php
 $passcode=@$_SESSION['code'];
