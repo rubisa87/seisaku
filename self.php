@@ -41,9 +41,9 @@
 <marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
 <strong>
     おしらせ：
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表があります</a> 
+<a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表が開催</a> 
 
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月１６日最終発表会が行われます  </a>  
+<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月4日最終発表会が開催  </a>  
 </strong>
 </marquee>
 </div>

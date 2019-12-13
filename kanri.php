@@ -116,13 +116,16 @@ if(!isset($_POST["datesearch"])){
 
   $st = $pdo->query("SELECT * FROM kintaidata ");
 }else{
-
+if(!@$_POST["kara"]&!@$_POST["made"]){
+$st = $pdo->query("SELECT * FROM kintaidata ");
+}else{
 $kara =$_POST["kara"];
 $made =$_POST["made"];
 echo $kara;
 echo $made;
 $st = $pdo->prepare("SELECT * FROM kintaidata WHERE date>=? AND date<=?");
 $st->execute(array($kara,$made));
+}
 }
 ?>
 
