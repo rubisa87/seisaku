@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title> 出勤管理システム</title>
-<link rel="stylesheet" href="shop.css">
-    <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <meta charset="UTF-8">
+<title>打刻</title>
+<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
+<link rel="stylesheet" href="layout.css" type="text/css" />
+<!-- <link rel="stylesheet" href="shop.css"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
+
+<script>
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
@@ -19,34 +19,41 @@
 </head>
 <body>
 
-<p class="top">
-    <p1 class = "top1">
-       <a href="">打刻</a>
-    </p1>
-    &nbsp &nbsp 
-    <p1 class = "top2">
-       <a href='self.php'>従業員</a>
+<div class="header">
+  <h1>勤怠管理システム</h1>
+  <p>Tran Duc Anh</p>
+</div>
 
-        <?php //$page1= "self"; echo "<a href='self_login.php?page=$page1'>従業員</a>"; ?>
-    </p1>
-&nbsp&nbsp
-    <p1 class = "top3">
-       <a href='kanri.php'>管理人</a>
+<div id="menu">
+  <ul>
+    <li><a href="main.php">ホーム</a></li>
+    <li><a href="self.php">各自</a>
+      <ul class="sub-menu">
+        <li><a href="#">勤怠データ</a></li>
+        <li><a href="#">給料</a></li>
+        <li><a href="#">個人情報確認</a></li>
+      </ul>
+      </li>
+    <li><a href="kanri.php">管理人</a>
+      <ul class="sub-menu">
+        <li><a href="#">勤怠データ一覧</a></li>
+        <li><a href="#">給料清算</a></li>
+        <li><a href="#">個人情報</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
-        <?php //$page2= "kanri"; echo "<a href='self_login.php?page=$page2'>管理人</a>"; ?>
-    </p1>
-</p>
-<br><br>
-<table  background="" height="40px" />
+<div class="row">
+  <table  background="" height="40px" />
 <tr>
 <td valign="top" >
 <div style="width:1230px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
 <marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
 <strong>
-    おしらせ：
 <a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表があります</a> 
 
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月１６日最終発表会が行われます  </a>  
+<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月４日最終発表会が行われます  </a>  
 </strong>
 </marquee>
 </div>
@@ -55,10 +62,10 @@
 
 <?php
 session_start();
-
 if (isset($_POST['destroy'])){
     session_destroy();
 }
+
     function sw_get_current_weekday() {
         date_default_timezone_set('Asia/tokyo');
         $weekday = date("l");
@@ -92,13 +99,11 @@ if (isset($_POST['destroy'])){
     }
 ?>
 
-
-
-
-
-<h2>
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>
     <div class="border in">
-    <?php
+   <?php
     $check=null;
     $name=$code=$aisatsu=$in1=$out1=$in2=$out2=   "";
 $pdo = new PDO("mysql:dbname=seisaku","root");
@@ -115,32 +120,9 @@ if(@($row['name'])){
 }else{
 $aisatsu ="パスコード確認し、再入力ください";
 
-  // echo $name;
-    
-// }
   }
 }
-// if (isset($_POST["skin"])){
-//     $code =$_POST["code"];
-//     $name =$_POST["name"];
-//     // echo "出勤ボタンチェックした"."<br>";
-//     // echo "code:".$code.",name:".$name."<br";
-//     // echo "name:".$name."<br>";
-//             // $stmt = $pdo->prepare("INSERT INTO userData(name, password,realname,mail,address,phone) VALUES (?,?, ?,?,?,?)");
-//       // $st->execute(array($_GET['name']));
-// if($name!=""){
-//     // $st = $pdo->query("INSERT INTO 'kintaidata'( 'date', 'passcode', 'name', 'sk') VALUES (CURRENT_DATE,$code,$name,CURRENT_TIME)");
-//         // $st = $pdo->query("INSERT INTO kintaidata( date, passcode, name, sk) VALUES (CURRENT_DATE,$code,$name,CURRENT_TIME)");
-// // INSERT INTO `kintaidata`( `date`, `passcode`, `name`, `sk`) VALUES (CURRENT_DATE,$code,'$name',CURRENT_TIME);
-//     $stmt = $pdo->prepare("INSERT INTO kintaidata(date, passcode, name, sk) VALUES (CURRENT_DATE,?,?,CURRENT_TIME)");
 
-//             $stmt->execute(array($code,$name));
-//         // echo "mysql insert　した "."<br>";
-
-// // $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcode=$code");
-//     // echo "select＊　in1 とった"."<br>";
-// // }else{ echo "no index of name and code ";}
-// }}
 if (isset($_POST["skin"]) ||isset($_POST["kkksin"])||isset($_POST["kksrin"])||isset($_POST["tkin"])||(isset($_POST["codein"])&$check==True) ){
     if($check!=True){
     $code =$_POST["code"];
@@ -165,12 +147,6 @@ $stmt = $pdo->query("UPDATE `kintaidata` SET tk=CURRENT_TIME WHERE date=CURRENT_
     }
     $aisatsu=$name."さん、<br>おはようございます。";
 
-
-
-
-
-
-
 $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcode=$code");
 
  $kintai = $st->fetch();
@@ -185,28 +161,29 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
 }
 }
 
-?>                           
-<!-- <div class="top_header-date"　> -->
-    <!-- <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> -->
-    <?php sw_get_current_weekday(); ?> || <span id="clock"></span>
-<!-- </div> -->
+sw_get_current_weekday(); ?> || <span id="clock"></span>
 <br>
-    <!-- <p style="font-size:15px;">バーコードを入力してください！</p> -->
    <form action="" method="POST">
     <input type="text" name="barcode"  class="barcodein radius" placeholder="パスコード入力" value="<?php echo $code; ?>"></input>
-    <!-- <imput  class="barcodein2" type= "submit" name="codein" value="OK"> -->
     <input  class="barcodein2 radius" type= "submit" name="codein" value="OK">
     <p><?php   echo "<br>".$aisatsu;
 ?></p>
-
-
 </form>
-    <script >
-// cho doan truy xuat ten nhan vien
-    </script>
-</p>
- </div>
+
+
+    </div>
+
+
+    <!-- <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div> -->
+ 
 </h2>
+    </div>
 <h2 class = "lcontent checkbutin">
     <form action = "" method = "POST">
 
@@ -228,9 +205,25 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
 </form>
 
     </h2>
-
-
-
+ </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>新着情報</h2>
+      <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
+      <li><a>新商品が発売</a></li>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+  </div>
+</div>
 <script>
     function startTime() {
         var today = new Date();
@@ -252,20 +245,11 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
     document.querySelector('body').addEventListener("load", startTime());
     
 </script>
-<!-- <footer>
-    <p><small>Copyright 2019 Nora Team All rights reserved.</small></p>
-</footer> -->
+<div class="footer">
+    <li><a href="#">Contact</a></li>
 
-<!-- this script got from www.htmlbestcodes.com-Coded by: Krishna Eydat -->
-
-
-</script>
-
-</script>
+  Copyright © 2019 Tran Duc Anh - 横浜システム工学院専門学校
+</div>
 
 </body>
- <!-- <div id="footer">&copy;2016 Web cơ bản All Rights Reserved</div> -->
 </html>
-
-<!-- INSERT INTO `kintaidata`( `date`, `passcode`, `name`, `sk`,) VALUES (CURRENT_DATE,'100','TRAN DUC ANH',CURRENT_TIME); -->
-<!-- UPDATE `kintaidata` SET kkks=CURRENT_TIME WHERE date='20191101' and passcode='101'; -->
