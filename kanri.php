@@ -257,6 +257,8 @@ while ($row = $stmt->fetch()) {
     <div class="card">
       <h2>Menu</h2>
       <li><a href="keisan.php">計算</a></li>
+            <li><a href="logout.php">ログアウト</a></li>
+
     </div>
     <div class="card">
       <h3>Popular Post</h3>

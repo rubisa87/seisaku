@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title> 出勤管理システム</title>
-<link rel="stylesheet" href="shop.css">
-    <!-- <link rel="stylesheet" type="text/css" href="vendor/bootstrap.css"> -->
+  <meta charset="UTF-8">
+<title>打刻</title>
+<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
+<link rel="stylesheet" href="layout.css" type="text/css" />
+<!-- <link rel="stylesheet" href="shop.css"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 </head>
 <body>
-<!-- <h5> -->
-<p class="top">
-    <p1 class = "top1">
-       <a href="main.php">打刻</a>
-    </p1>
-    &nbsp &nbsp 
-    <p1 class = "top2">
-        <a href="self.php">従業員</a>
-    </p1>
-&nbsp&nbsp
-    <p1 class = "top3">
-        <a href="kanri.php">管理人</a>
-    </p1>
-</p>
-<br>
-</p>
-<br><br><br><br><br>
 
+<div class="header">
+  <h1>勤怠管理システム</h1>
+  <p>Tran Duc Anh</p>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="main.php">ホーム</a></li>
+    <li><a href="self.php">各自</a>
+      <ul class="sub-menu">
+        <li><a href="#">勤怠データ</a></li>
+        <li><a href="#">給料</a></li>
+        <li><a href="#">個人情報確認</a></li>
+      </ul>
+      </li>
+    <li><a href="kanri.php">管理人</a>
+      <ul class="sub-menu">
+        <li><a href="#">勤怠データ一覧</a></li>
+        <li><a href="#">給料清算</a></li>
+        <li><a href="#">個人情報</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 <?php 
     session_start();
 
@@ -85,8 +99,8 @@ if (!empty($_SESSION['error2'])) {
 }
 
 ?>
-
-
+<div style="height:300px;">
+    <div style="float:left;width: 24%;"> &nbsp</div>
     <div class="login">
         <h2>ログイン</h2>
         <?php echo @$errormess;
@@ -106,10 +120,16 @@ if (!empty($_SESSION['error2'])) {
             </p>
         </form>
     </div>
+    <div style="float:left;width: 24%;">&nbsp</div>
+</div>
+ <div class="footer">
+    <li><a href="#">Contact</a></li>
 
-        </body>
+  Copyright © 2019 Tran Duc Anh - 横浜システム工学院専門学校
+</div>
+
+</body>
 </html>
-
 
 
             <!-- echo "<a href='user_update.php?name=$name '>登録情報変更</a>"; -->

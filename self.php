@@ -62,7 +62,7 @@ session_start();
     //④ログイン画面へ遷移する。
 // }
     $_SESSION['error2'] ="ログインしてください";
-    header("Location: self_login.php?page=kanri");//④ログイン画面へ遷移する。
+    header("Location: self_login.php?page=self");//④ログイン画面へ遷移する。
 } 
   ?>
  <div class="leftcolumn">
@@ -197,9 +197,10 @@ while ($row = $stmt->fetch()) {
   </div>
 <div class="rightcolumn">
     <div class="card">
-      <h2>新着情報</h2>
+      <h2>Menu</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
       <li><a>新商品が発売</a></li>
+      <li><a href="keisan.php">計算</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>
