@@ -153,7 +153,7 @@ $st->execute(array($kara,$made));
 </table>
 
 <h2 ><br>
-    出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspメッセージ
+    出勤実績
     </h2>
       <form method="POST">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <!-- 参照:<input type="date" id="datepicker1" name="kara">から<input type="date" id="datepicker2" name="made">まで <input type="submit" name="datesearch" value="検索"> -->

@@ -10,12 +10,10 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
+
+
 </head>
 <body>
 
@@ -185,7 +183,7 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
 </h2>
     </div>
 <h2 class = "lcontent checkbutin">
-    <form action = "" method = "POST">
+    <form id ="l_d" action = "" method = "POST">
 
     <input type="hidden" name="code" value="<?php echo $code; ?>">
         <input type="hidden" name="name" value="<?php echo $name; ?>">
@@ -201,10 +199,12 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
         <input  class="butsize radius" type= "" name="kksrout" value="<?php echo $in2 ?>">
         <input  class="butsize radius" type= "" name="tkout" value="<?php echo $out2 ?>">
         <br><br><br><br>
-         <input  class="butsize radius" type= "submit" name="destroy" value="終了">
+         <input  class="butsize radius" id ="destroy" type= "submit" name="destroy" value="終了">
 </form>
 
     </h2>
+
+
  </div>
   <div class="rightcolumn">
     <div class="card">
@@ -243,6 +243,7 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
         return i;
     }
     document.querySelector('body').addEventListener("load", startTime());
+    
     
 </script>
 <div class="footer">

@@ -10,6 +10,38 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- tao hieu ung an noi dung -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script>
+  a1=a2=a3=0;
+  str="\\\/";
+  function chendau(){
+    ++a1;
+    if(a1%2==1){
+      str="\/\\";
+    }else{
+      str="\\\/";
+    }
+    document.getElementById('dau').innerHTML =str;
+  }
+// ---------------------cách 2 la đây ↓↓↓↓↓↓↓↓↓↓↓ーーーーーーーーーーーーーー
+$(document).ready(function(){
+
+      $("#theme1").click(function(){
+        $("#cont1").toggle();
+       
+    });
+      $("#theme2").click(function(){
+        $("#cont2").toggle();
+       
+    });
+      $("#theme3").click(function(){
+        $("#cont3").toggle();
+       
+    });
+});
+// ーーーーーーーーーーーーーーーーーーーーーーーーcách 2 chỉ từng nàyy↑↑↑↑↑↑↑↑↑↑---------------------------
+</script>
 
 
 </head>
@@ -27,7 +59,7 @@
       <ul class="sub-menu">
         <li><a href="#">勤怠データ</a></li>
         <li><a href="#">給料</a></li>
-        <li><a href="#">個人情報確認</a></li>
+        <li><a href="kojin.php">個人情報確認</a></li>
       </ul>
       </li>
     <li><a href="kanri.php">管理人</a>
@@ -67,45 +99,16 @@ session_start();
   ?>
  <div class="leftcolumn">
     <div class="card">
-<h2><br>
-    従業員情報一覧
+
+<br>
+<h2 style="color:#ffae6a" id="theme2">
+   ⇋ 出勤実績　⇋
     </h2>
-<table border="1" class="maintable" >
-<tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th></tr>
-<?php
-$passcode=@$_SESSION['code'];
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
-   $stmt = $pdo->prepare('SELECT * FROM staffdata WHERE passcode = ?');
-            $stmt->execute(array($passcode));
-  //$st = $pdo->query("SELECT * FROM staffdata where passcode =$passcode");
-  while ($row = $stmt->fetch()) {
-    $passcode = htmlspecialchars($row['passcode']);
-    $name = htmlspecialchars($row['name']);
-    $datebirth = htmlspecialchars($row['datebirth']);
-    $tell = htmlspecialchars($row['tell']);
-    $address = htmlspecialchars($row['address']);
-    $incomdate = htmlspecialchars($row['incomdate']);
-    $chii = htmlspecialchars($row['chii']);
-    $jikyuu = htmlspecialchars($row['jikyuu']);
-    $sekinin = htmlspecialchars($row['sekinin']);
-    $teate = htmlspecialchars($row['teate']);
-    $koutsuuhi = htmlspecialchars($row['koutsuuhi']);
-
-    echo "<tr><td>$passcode</td><td>$name</td><td>$datebirth</td><td>$tell</td><td>$address</td><td>$incomdate</td><td>$chii</td><td>$jikyuu</td><td>$sekinin</td><td>$teate</td><td>$koutsuuhi</td></tr>
-";
-
-    // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";
-  }
-  
-?>
-
-</table>
-<h2><br>
-    出勤実績   
-    </h2>
-<table border="1" class="table" >
+<table id="cont2" border="1" class="table" >
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
 <?php
+$passcode=@$_SESSION['code'];
+
   $pdo = new PDO("mysql:dbname=seisaku", "root");
    // $stmt = $pdo->prepare('SELECT * FROM kintaidata WHERE passcode = ?');
             // $stmt->execute(array($passcode));
@@ -150,7 +153,11 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
 
 
   ?>
-<table border="1" class="mess" >
+  <br>
+  <h2 style="color:#ffae6a" id="theme3">
+   ⇋ メッセージ　⇋
+    </h2>
+<table id="cont3" border="1" class="mess" >
 <tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
   $pdo = new PDO("mysql:dbname=seisaku", "root");
@@ -199,8 +206,9 @@ while ($row = $stmt->fetch()) {
     <div class="card">
       <h2>Menu</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a>新商品が発売</a></li>
-      <li><a href="keisan.php">計算</a></li>
+           <li><a href="self.php">勤怠</a></li>
+     <li><a href="mess.php">メッセージ</a></li>
+<li><a href="kojin.php">個人情報確認</a></li>
      <li><a href="logout.php?page=self">ログアウト</a></li>
 
     </div>
