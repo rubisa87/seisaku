@@ -41,7 +41,7 @@
 </div>
 
 <div class="row">
-  <table  background="" height="40px" />
+  <table width="100%" background="" height="40px" />
 <tr>
 <td valign="top" >
 <div style="width:1230px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
@@ -152,7 +152,6 @@ $st->execute(array($kara,$made));
 
 </table>
 
-</table>
 <h2 ><br>
     出勤実績　&nbsp&nbsp&nbsp&nbsp　&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspメッセージ
     </h2>
@@ -256,9 +255,8 @@ while ($row = $stmt->fetch()) {
   </div>
 <div class="rightcolumn">
     <div class="card">
-      <h2>新着情報</h2>
-      <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a>新商品が発売</a></li>
+      <h2>Menu</h2>
+      <li><a href="keisan.php">計算</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>

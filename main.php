@@ -45,7 +45,7 @@
 </div>
 
 <div class="row">
-  <table  background="" height="40px" />
+  <table width="100%" background="" height="40px" />
 <tr>
 <td valign="top" >
 <div style="width:1230px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
