@@ -201,6 +201,8 @@ while ($row = $stmt->fetch()) {
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
       <li><a>新商品が発売</a></li>
       <li><a href="keisan.php">計算</a></li>
+     <li><a href="logout.php?page=self">ログアウト</a></li>
+
     </div>
     <div class="card">
       <h3>Popular Post</h3>
