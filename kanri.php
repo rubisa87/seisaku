@@ -102,11 +102,11 @@ echo "<form><tr><td><input type='text' style='width:80px' name='passcode' placeh
 <td><input type='text' style='width:180px' name='address' placeholder='住所' value=''></td>
 <td><input type='text' style='width:80px' name='incomdate' placeholder='年ー月ー日' value=''></td>
 <td><input type='text' style='width:80px' name='chii' placeholder='地位' value=''></td>
-<td><input type='text' style='width:80px' name='jikyuu' placeholder='時給' value=''></td>
-<td><input type='text' style='width:80px' name='sekinin' placeholder='責任手当' value='0'></td>
-<td><input type='text' style='width:80px' name='teate' placeholder='手当' value='0'></td>
-<td><input type='text' style='width:80px' name='koutsuuhi' placeholder='交通費' value='0'></td>
-<td><input type='text' style='width:80px' name='password' placeholder='password' value=''></td>
+<td><input type='text' size='2' name='jikyuu' placeholder='時給' value=''></td>
+<td><input type='text' size='2' name='sekinin' placeholder='責任手当' value='0'></td>
+<td><input type='text' size='2' name='teate' placeholder='手当' value='0'></td>
+<td><input type='text' size='2' name='koutsuuhi' placeholder='交通費' value='0'></td>
+<td><input type='text' size='2' name='password' placeholder='password' value=''></td>
 
 </tr>"; 
 echo "<tr><td><button type = 'submit' formmethod='POST' name ='touroku' >登録</button></tr></form>";
@@ -132,22 +132,6 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
 
  }
   
-
-if(!isset($_POST["datesearch"])){
-
-  $st = $pdo->query("SELECT * FROM kintaidata ");
-}else{
-if(!@$_POST["kara"]&!@$_POST["made"]){
-$st = $pdo->query("SELECT * FROM kintaidata ");
-}else{
-$kara =$_POST["kara"];
-$made =$_POST["made"];
-echo $kara;
-echo $made;
-$st = $pdo->prepare("SELECT * FROM kintaidata WHERE date>=? AND date<=?");
-$st->execute(array($kara,$made));
-}
-}
 ?>
 
 </table>
@@ -155,7 +139,29 @@ $st->execute(array($kara,$made));
 <h2 ><br>
     出勤実績
     </h2>
-      <form method="POST">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <?php
+$m=False;
+
+    if(!isset($_POST["datesearch"])){
+
+  $st = $pdo->query("SELECT * FROM kintaidata ");
+}else{
+if(!@$_POST["kara"]||!@$_POST["made"]){
+$st = $pdo->query("SELECT * FROM kintaidata ");
+}else{
+  $m=True;
+$kara =$_POST["kara"];
+$made =$_POST["made"];
+$st = $pdo->prepare("SELECT * FROM kintaidata WHERE date>=? AND date<=?");
+$st->execute(array($kara,$made));
+}
+}
+    if($m==True){
+    echo "<p><br>".$kara."から";
+echo $made."まで</P>";}
+    ?>
+    
+      <form method="POST">
         <!-- 参照:<input type="date" id="datepicker1" name="kara">から<input type="date" id="datepicker2" name="made">まで <input type="submit" name="datesearch" value="検索"> -->
         参照:<input type="date"  name="kara">から<input type="date" name="made">まで <input type="submit" name="datesearch" value="検索"></form>
 
