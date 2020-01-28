@@ -88,7 +88,7 @@ $(document).ready(function(){
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -110,8 +110,6 @@ session_start();
 <tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
 $passcode=@$_SESSION['code'];
-
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
    $stmt = $pdo->query("SELECT * FROM messenger WHERE tousercode=$passcode");
             // $stmt->execute(array($passcode));
  // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");

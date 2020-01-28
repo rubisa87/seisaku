@@ -88,11 +88,9 @@ $(document).ready(function(){
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
  if ($_SESSION['kanri']==False){
-    //③SESSIONの「error2」に「ログインしてください」と設定する。
-    //④ログイン画面へ遷移する。
-// }
+
     $_SESSION['error2'] ="ログインしてください";
     header("Location: self_login.php?page=self");//④ログイン画面へ遷移する。
 } 
@@ -108,10 +106,6 @@ session_start();
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
 <?php
 $passcode=@$_SESSION['code'];
-
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
-   // $stmt = $pdo->prepare('SELECT * FROM kintaidata WHERE passcode = ?');
-            // $stmt->execute(array($passcode));
  $stmt = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
   while ($row = $stmt->fetch()) {
     $date = htmlspecialchars($row['date']);

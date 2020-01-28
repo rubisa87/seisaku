@@ -59,7 +59,7 @@
 </table>
 
 <?php
-session_start();
+require "dbasename.php";
 if (isset($_POST['destroy'])){
     session_destroy();
 }
@@ -104,7 +104,6 @@ if (isset($_POST['destroy'])){
    <?php
     $check=null;
     $name=$code=$aisatsu=$in1=$out1=$in2=$out2=   "";
-$pdo = new PDO("mysql:dbname=seisaku","root");
 if (isset($_POST["codein"])) {
    $code= $_POST['barcode'];
   $st = $pdo->query("SELECT * FROM staffdata where passcode= '$code'");

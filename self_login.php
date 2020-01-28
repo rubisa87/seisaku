@@ -40,7 +40,7 @@
   </ul>
 </div>
 <?php 
-    session_start();
+require "dbasename.php";
 
 $page=@$_GET['page']; 
 
@@ -54,7 +54,6 @@ if (isset($_POST["login"])) {
 
                $passcode = $_POST["passcode"];
         $pass = $_POST["pass"];
-        $pdo = new PDO("mysql:dbname=seisaku","root");
    $stmt = $pdo->prepare('SELECT * FROM staffdata WHERE passcode = ?');
             $stmt->execute(array($passcode));
             $rows = $stmt->fetch();

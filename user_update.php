@@ -56,7 +56,7 @@
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -70,7 +70,6 @@ session_start();
 <?php
   $code = $_GET['code'];
   
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
   $st = $pdo->prepare("SELECT * FROM staffdata WHERE passcode=?");
   $st->execute(array($code));
   $row = $st->fetch();

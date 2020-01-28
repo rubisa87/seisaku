@@ -11,7 +11,8 @@
 
 
 <?php
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
+require "dbasename.php";
+
   $st = $pdo->prepare("UPDATE kintaidata SET date=?, passcode=?, name=?, sk=?, kkks=?, kksr=?, tk=? WHERE id=?");
   $st->execute(array($_POST['date'],$_POST['passcode'],$_POST['name'], $_POST['sk'],$_POST['kkks'],$_POST['kksr'],$_POST['tk'],$_POST['id'],));
 require "kanri.php"; 

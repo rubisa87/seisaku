@@ -56,7 +56,8 @@
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
+
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -78,8 +79,6 @@ session_start();
 <tr><th>日付</th><th>コード</th><th>氏名</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th><th>操作</th></tr>
 <?php
  $id = $_GET['id'];
-  
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
   $st = $pdo->prepare("SELECT * FROM kintaidata WHERE id=?");
   $st->execute(array($id));
   $row = $st->fetch();

@@ -56,7 +56,7 @@
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -74,8 +74,6 @@ session_start();
 <table border="1" class="maintable">
 <tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>操作</th></tr>
 <?php
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
-      // $pdo = new PDO("mysql:dbname=b13_24945452_seisaku;host=sql304.byethost.com;charset=utf8", "b13_24945452","NFky0561");
 
   $st = $pdo->query("SELECT * FROM staffdata");
   while ($row = $st->fetch()) {
