@@ -160,7 +160,6 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
 <table id="cont3" border="1" class="mess" >
 <tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
-  $pdo = new PDO("mysql:dbname=seisaku", "root");
    $stmt = $pdo->query("SELECT * FROM messenger WHERE tousercode=$passcode");
             // $stmt->execute(array($passcode));
  // $st = $pdo->query("SELECT * FROM kintaidata where passcode= $passcode");
@@ -183,7 +182,6 @@ $ndb = $pdo->query("SELECT * FROM staffdata WHERE passcode= $fromu");
 <td><select name="name" style ="font-size: 9px"
 >
             <?php
-$pdo = new PDO("mysql:dbname=seisaku", "root");
    $stmt = $pdo->query("SELECT * FROM staffdata");
 while ($row = $stmt->fetch()) {
   $code=$row['passcode'];

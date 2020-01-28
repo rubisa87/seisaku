@@ -56,7 +56,7 @@
 </td></tr>
 </table>
 <?php
-session_start();
+require "dbasename.php";
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -64,7 +64,7 @@ session_start();
     $_SESSION['error2'] ="ログインしてください";
     header("Location: self_login.php?page=kanri");//④ログイン画面へ遷移する。
 } 
-$pdo = new PDO("mysql:dbname=seisaku", "root");
+
 function floorp($val, $precision)
 {
     $mult = pow(10, $precision); // Can be cached in lookup table        
