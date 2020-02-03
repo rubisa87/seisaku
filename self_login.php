@@ -61,7 +61,7 @@ echo $rows['password'];
 if($page=="kanri"){
     if($passcode =="mise" &$pass =="8793"){
     $_SESSION['kanri']=True;
-header("Location: kanri.php");
+    header("Location: kanri.php");
            exit();
     }else{
 $errormess=$errormess."アクセス権限無効";

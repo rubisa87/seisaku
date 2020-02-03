@@ -41,22 +41,11 @@
 </div>
 
 <div class="row">
-  <table width="100%" background="" height="40px" />
-<tr>
-<td valign="top" >
-<div style="width:100%;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
-<marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
-<strong>
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表があります</a> 
 
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月４日最終発表会が行われます  </a>  
-</strong>
-</marquee>
-</div>
-</td></tr>
-</table>
 <?php
 require "dbasename.php";
+require "popup.php";
+
  if ($_SESSION['kanri']==False){
     //③SESSIONの「error2」に「ログインしてください」と設定する。
     //④ログイン画面へ遷移する。
@@ -64,7 +53,7 @@ require "dbasename.php";
     $_SESSION['error2'] ="ログインしてください";
     header("Location: self_login.php?page=kanri");//④ログイン画面へ遷移する。
 } 
-
+// -----------------lam tron thap phan-------------------
 function floorp($val, $precision)
 {
     $mult = pow(10, $precision); // Can be cached in lookup table        
@@ -143,6 +132,8 @@ $nikkyu=no0($koutsuuhi +$ippan+$zangyoudai+$shinyadai);
       <h2>Menu</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
       <li><a href="keisan.php">計算</a></li>
+      <li><a href="logout.php?page=self">ログアウト</a></li>
+
     </div>
     <div class="card">
       <h3>Popular Post</h3>

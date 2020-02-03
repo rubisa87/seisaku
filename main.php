@@ -29,14 +29,14 @@
       <ul class="sub-menu">
         <li><a href="#">勤怠データ</a></li>
         <li><a href="#">給料</a></li>
-        <li><a href="#">個人情報確認</a></li>
+        <li><a href="kojin.php">個人情報確認</a></li>
       </ul>
       </li>
     <li><a href="kanri.php">管理人</a>
       <ul class="sub-menu">
-        <li><a href="#">勤怠データ一覧</a></li>
-        <li><a href="#">給料清算</a></li>
-        <li><a href="#">個人情報</a></li>
+        <li><a href="kanri.php">勤怠データ一覧</a></li>
+        <li><a href="keisan.php">給料清算</a></li>
+        <li><a href="kojin_ichiran">個人情報一覧</a></li>
       </ul>
     </li>
   </ul>
@@ -136,14 +136,15 @@ $stmt = $pdo->query("UPDATE `kintaidata` SET tk=CURRENT_TIME WHERE date=CURRENT_
 $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcode=$code");
 
  $kintai = $st->fetch();
+ $dis1=$dis2=$dis3=$dis4="";
     $in1=$kintai['sk'];
  $out1=$kintai['kkks'];
   $in2=$kintai['kksr'];
    $out2=$kintai['tk'];
-   if($in1=="00:00:00"){ $in1="";}
-   if($out1=="00:00:00"){ $out1="";}
-    if($in2=="00:00:00"){ $in2="";}
- if($out2=="00:00:00"){ $out2="";}
+   if($in1=="00:00:00"){ $in1="";}else{$dis1="disabled";}
+   if($out1=="00:00:00"){ $out1="";}else{$dis2="disabled";}
+    if($in2=="00:00:00"){ $in2="";}else{$dis3="disabled";}
+ if($out2=="00:00:00"){ $out2="";}else{$dis4="disabled";}
 }
 }
 
@@ -176,10 +177,10 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
     <input type="hidden" name="code" value="<?php echo $code; ?>">
         <input type="hidden" name="name" value="<?php echo $name; ?>">
 
- <input  class="butsize radius" type= "submit" name="skin" value="出勤">
-  <input  class="butsize radius" type= "submit" name="kkksin" value="休憩開始">
-   <input  class="butsize radius" type= "submit" name="kksrin" value="休憩終了">
-    <input  class="butsize radius" type= "submit" name="tkin" value="退勤">
+ <input  class="butsize radius" <?php echo @$dis1 ;?> type= "submit" name="skin" value="出勤">
+  <input  class="butsize radius" <?php echo @$dis2 ;?> type= "submit" name="kkksin" value="休憩開始">
+   <input  class="butsize radius" <?php echo @$dis3 ;?> type= "submit" name="kksrin" value="休憩終了">
+    <input  class="butsize radius" <?php echo @$dis4 ;?> type= "submit" name="tkin" value="退勤">
 
     <br><br>
         <input  class="butsize radius" type= "" name="skout" value="<?php echo $in1 ?> ">
@@ -198,7 +199,7 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
     <div class="card">
       <h2>新着情報</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a>新商品が発売</a></li>
+      <li><a href="shinshouhin.php">新商品が発売</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>

@@ -73,23 +73,12 @@ $(document).ready(function(){
 </div>
 
 <div class="row">
-  <table width="100%" background="" height="40px" />
-<tr>
-<td valign="top" >
-<div style="width:1230px;height:28px;font-size:16px;font-family:Arial;float:right;padding-top:9px;padding-right:25px;">
-<marquee onmouseover=this.stop() onmouseout=this.start() scrolldelay="50" scrollamount="5">
-<strong>
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#fb4ca7">  今週の木曜日（１２日）二俣川サンハートで第２回発表があります</a> 
 
-<a href="/Đường dẫn tới thông báo của bạn" style="color:#ff0">    2月４日最終発表会が行われます  </a>  
-</strong>
-</marquee>
-</div>
-</td></tr>
-</table>
 <?php
 require "dbasename.php";
- if ($_SESSION['kanri']==False){
+require "popup.php";
+
+ if ($_SESSION['login']==False){
 
     $_SESSION['error2'] ="ログインしてください";
     header("Location: self_login.php?page=self");//④ログイン画面へ遷移する。
@@ -152,7 +141,7 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
    ⇋ メッセージ　⇋
     </h2>
 <table id="cont3" border="1" class="mess" >
-<tr><th>氏名</th><th>時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
+<tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
    $stmt = $pdo->query("SELECT * FROM messenger WHERE tousercode=$passcode");
             // $stmt->execute(array($passcode));
