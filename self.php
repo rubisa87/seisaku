@@ -89,7 +89,7 @@ require "popup.php";
 
 <br>
 <h2 style="color:#ffae6a" id="theme2">
-   ⇋ 出勤実績　⇋
+   出勤実績　
     </h2>
 <table id="cont2" border="1" class="table" >
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
@@ -138,7 +138,7 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
   ?>
   <br>
   <h2 style="color:#ffae6a" id="theme3">
-   ⇋ メッセージ　⇋
+   メッセージ　
     </h2>
 <table id="cont3" border="1" class="mess" >
 <tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>

@@ -141,10 +141,11 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
  $out1=$kintai['kkks'];
   $in2=$kintai['kksr'];
    $out2=$kintai['tk'];
-   if($in1=="00:00:00"){ $in1="";}else{$dis1="disabled";}
-   if($out1=="00:00:00"){ $out1="";}else{$dis2="disabled";}
+   if($in1=="00:00:00"){ $in1="";}else if(@$in1){$dis1="disabled";}
+   if($out1=="00:00:00"){ $out1="";$dis3="disabled";}else{$dis2="disabled";}
     if($in2=="00:00:00"){ $in2="";}else{$dis3="disabled";}
  if($out2=="00:00:00"){ $out2="";}else{$dis4="disabled";}
+ if(isset($in1))echo "in1 co ton tai va bang".$in1;
 }
 }
 
