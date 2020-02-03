@@ -14,15 +14,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script>
   a1=a2=a3=0;
-  str="\\\/";
+  str="▼";
   function chendau(){
     ++a1;
     if(a1%2==1){
-      str="\/\\";
+      str="▲";
     }else{
-      str="\\\/";
+      str="▼";
     }
-    document.getElementById('dau').innerHTML =str;
+    document.getElementById('dau1').innerHTML =str;
+        document.getElementById('dau2').innerHTML =str;
+
+  }
+  function chendau3(){
+    ++a2;
+    if(a2%2==1){
+      str="▲";
+    }else{
+      str="▼";
+    }
+    document.getElementById('dau3').innerHTML =str;
+        document.getElementById('dau4').innerHTML =str;
+
   }
 // ---------------------cách 2 la đây ↓↓↓↓↓↓↓↓↓↓↓ーーーーーーーーーーーーーー
 $(document).ready(function(){
@@ -88,8 +101,8 @@ require "popup.php";
     <div class="card">
 
 <br>
-<h2 style="color:#ffae6a" id="theme2">
-   出勤実績　
+<h2 style="color:#ffae6a" id="theme2" onclick="chendau3()">
+      <span id ="dau3">▼</span> 出勤実績<span id ="dau4">▼</span>
     </h2>
 <table id="cont2" border="1" class="table" >
 <tr><th>日付</th><th>出勤</th><th>休憩開始</th><th>休憩終了</th><th>退勤</th></tr>
@@ -137,8 +150,8 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
 
   ?>
   <br>
-  <h2 style="color:#ffae6a" id="theme3">
-   メッセージ　
+  <h2 style="color:#ffae6a" onclick ="chendau()" id="theme3">
+      <span id ="dau1">▼</span> メッセージ　<span id ="dau2">▼</span>
     </h2>
 <table id="cont3" border="1" class="mess" >
 <tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>

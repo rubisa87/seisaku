@@ -13,17 +13,7 @@
   <!-- tao hieu ung an noi dung -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script>
-  a1=a2=a3=0;
-  str="\\\/";
-  function chendau(){
-    ++a1;
-    if(a1%2==1){
-      str="\/\\";
-    }else{
-      str="\\\/";
-    }
-    document.getElementById('dau').innerHTML =str;
-  }
+ 
 // ---------------------cách 2 la đây ↓↓↓↓↓↓↓↓↓↓↓ーーーーーーーーーーーーーー
 $(document).ready(function(){
 
@@ -88,13 +78,10 @@ require "popup.php";
  <div class="leftcolumn">
     <div class="card">
 
-<br>
-
-  <br>
   <h2 style="color:#ffae6a" id="theme3">
-   ⇋ メッセージ　⇋
+    メッセージ　
     </h2>
-<table id="" border="1" class="mess" >
+<table id="cont3" border="1" class="mess" >
 <tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
 <?php
 $passcode=@$_SESSION['code'];
