@@ -203,6 +203,7 @@ while ($row = $stmt->fetch()) {
            <li><a href="self.php">勤怠</a></li>
      <li><a href="mess.php">メッセージ</a></li>
 <li><a href="kojin.php">個人情報確認</a></li>
+<br>
      <li><a href="logout.php?page=self">ログアウト</a></li>
 
     </div>

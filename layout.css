@@ -193,7 +193,10 @@ body {
 .header {
   padding: 10px;
   text-align: center;
-  background: white;
+  /*background: #c0ffdd;*/
+    background: white;
+ background-image: url("background.jpg");
+
 }
 
 .header h1 {

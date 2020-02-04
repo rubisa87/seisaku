@@ -11,16 +11,29 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  a1=a2=a3=0;
-  str="\\\/";
+ a1=a2=a3=0;
+  str="▼";
   function chendau(){
     ++a1;
     if(a1%2==1){
-      str="\/\\";
+      str="▲";
     }else{
-      str="\\\/";
+      str="▼";
     }
-    document.getElementById('dau').innerHTML =str;
+    document.getElementById('dau1').innerHTML =str;
+        document.getElementById('dau2').innerHTML =str;
+
+  }
+  function chendau3(){
+    ++a2;
+    if(a2%2==1){
+      str="▲";
+    }else{
+      str="▼";
+    }
+    document.getElementById('dau3').innerHTML =str;
+        document.getElementById('dau4').innerHTML =str;
+
   }
 // ---------------------cách 2 la đây ↓↓↓↓↓↓↓↓↓↓↓ーーーーーーーーーーーーーー
 $(document).ready(function(){
@@ -85,8 +98,8 @@ require "popup.php";
   ?>
  <div class="leftcolumn">
     <div class="card">
-<h2 style="color:#ffae6a" id ="theme2">
-    出勤実績
+<h2 style="color:#ffae6a" onclick ="chendau()" id ="theme2">
+      <span id ="dau1">▼</span> 出勤実績<span id ="dau2">▼</span>
     </h2>
     <?php
 $m=False;
@@ -163,8 +176,8 @@ $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, 
 
 
   ?>
-  <h2 style="color:#ffae6a" id ="theme3">
-    メッセージ
+  <h2 style="color:#ffae6a" onclick ="chendau3()" id ="theme3">
+      <span id ="dau3">▼</span> メッセージ<span id ="dau4">▼</span>
     </h2>
 <table id="cont3" border="1" class="mess">
 <tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
@@ -214,8 +227,8 @@ while ($row = $stmt->fetch()) {
       <h2>Menu</h2>
       <li><a href="#">勤怠データ</a></li>
       <li><a href="keisan.php">計算</a></li>
-      <li><a href="kojin_ichiran.php">個人情報一覧、登録</a></li>
-            <li><a href="logout.php?page=kanri">ログアウト</a></li>
+      <li><a href="kojin_ichiran.php">従業員情報</a></li>
+      <br><li><a href="logout.php?page=kanri">ログアウト</a></li>
 
     </div>
     <div class="card">

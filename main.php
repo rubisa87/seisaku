@@ -200,7 +200,7 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
     <div class="card">
       <h2>新着情報</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a href="shinshouhin.php">新商品が発売</a></li>
+      <li><a href="shinchaku.php?number=new">新商品が発売</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>

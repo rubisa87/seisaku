@@ -132,7 +132,8 @@ $nikkyu=no0($koutsuuhi +$ippan+$zangyoudai+$shinyadai);
       <h2>Menu</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
       <li><a href="keisan.php">計算</a></li>
-      <li><a href="logout.php?page=self">ログアウト</a></li>
+            <li><a href="kanri.php">戻る</a></li>
+      <br><li><a href="logout.php?page=self">ログアウト</a></li>
 
     </div>
     <div class="card">

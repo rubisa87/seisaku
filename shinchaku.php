@@ -52,7 +52,7 @@ require "popup.php";
   <div class="leftcolumn">
     <div class="card">
 
-    <h3>この先新発売商品まだありません</h3>
+    <h3>記事の明細内容はまだありません</h3>
 
 
 </div>
@@ -61,7 +61,7 @@ require "popup.php";
     <div class="card">
       <h2>新着情報</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a href="shinshouhin.php">新商品が発売</a></li>
+      <li><a href="shinchaku.php?number=new">新商品が発売</a></li>
       <li><a href="main.php">戻る</a></li>
 
     </div>

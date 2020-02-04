@@ -131,7 +131,7 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
       <h2>Menu</h2>
       <li><a href="keisan.php">計算</a></li>
       <li><a href="kojin_ichiran.php">個人情報一覧、登録</a></li>
-            <li><a href="logout.php?page=kanri">ログアウト</a></li>
+      <br><li><a href="logout.php?page=kanri">ログアウト</a></li>
 
     </div>
     <div class="card">
