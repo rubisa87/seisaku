@@ -13,37 +13,9 @@
 
 
 </head>
-<body>
-
-<div class="header">
-  <h1>勤怠管理システム</h1>
-  <p>Tran Duc Anh</p>
-</div>
-
-<div id="menu">
-  <ul>
-    <li><a href="main.php">ホーム</a></li>
-    <li><a href="self.php">各自</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ</a></li>
-        <li><a href="#">給料</a></li>
-        <li><a href="#">個人情報確認</a></li>
-      </ul>
-      </li>
-    <li><a href="kanri.php">管理人</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ一覧</a></li>
-        <li><a href="#">給料清算</a></li>
-        <li><a href="#">個人情報</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="row">
-
 <?php
 require "dbasename.php";
+require "head.php";
 require "popup.php";
 
  if ($_SESSION['kanri']==False){
@@ -129,8 +101,10 @@ $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,inco
 <div class="rightcolumn">
     <div class="card">
       <h2>Menu</h2>
+      <li><a href="kanri.php">勤怠データ</a></li>
+
       <li><a href="keisan.php">計算</a></li>
-      <li><a href="kojin_ichiran.php">個人情報一覧、登録</a></li>
+      <li><a href="kojin_ichiran.php">従業員情報</a></li>
       <br><li><a href="logout.php?page=kanri">ログアウト</a></li>
 
     </div>

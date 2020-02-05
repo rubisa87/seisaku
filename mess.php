@@ -6,12 +6,12 @@
 <!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
 <link rel="stylesheet" href="layout.css" type="text/css" />
 <!-- <link rel="stylesheet" href="shop.css"> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!-- tao hieu ung an noi dung -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!- tao- hieu ung an noi dung -->
+  <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
   <script>
  
 // ---------------------cách 2 la đây ↓↓↓↓↓↓↓↓↓↓↓ーーーーーーーーーーーーーー
@@ -35,36 +35,11 @@ $(document).ready(function(){
 
 
 </head>
-<body>
 
-<div class="header">
-  <h1>勤怠管理システム</h1>
-  <p>Tran Duc Anh</p>
-</div>
-
-<div id="menu">
-  <ul>
-    <li><a href="main.php">ホーム</a></li>
-    <li><a href="self.php">各自</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ</a></li>
-        <li><a href="#">給料</a></li>
-        <li><a href="kojin.php">個人情報確認</a></li>
-      </ul>
-      </li>
-    <li><a href="kanri.php">管理人</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ一覧</a></li>
-        <li><a href="#">給料清算</a></li>
-        <li><a href="#">個人情報</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="row">
 <?php
 require "dbasename.php";
+require "head.php";
+
 require "popup.php";
 
  if ($_SESSION['login']==False){
@@ -82,7 +57,7 @@ require "popup.php";
     メッセージ　
     </h2>
 <table id="cont3" border="1" class="mess" >
-<tr><th style="width:200px">氏名</th><th style="width:150px">時間</th><th style="width:300px">内容</th><th style="width:30px">状態</th></tr>
+<tr><th >氏名</th><th >時間</th><th >内容</th><th >状態</th></tr>
 <?php
 $passcode=@$_SESSION['code'];
    $stmt = $pdo->query("SELECT * FROM messenger WHERE tousercode=$passcode");

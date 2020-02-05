@@ -5,50 +5,22 @@
 <title>打刻</title>
 <!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
 <link rel="stylesheet" href="layout.css" type="text/css" />
-<!-- <link rel="stylesheet" href="shop.css"> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<!-- <link rel="stylesheet" href="shop.css">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>     -->
 
 
 </head>
-<body>
 
-<div class="header">
-  <h1>勤怠管理システム</h1>
-  <p>Tran Duc Anh</p>
-</div>
-
-<div id="menu">
-  <ul>
-    <li><a href="main.php">ホーム</a></li>
-    <li><a href="self.php">各自</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ</a></li>
-        <li><a href="#">給料</a></li>
-        <li><a href="kojin.php">個人情報確認</a></li>
-      </ul>
-      </li>
-    <li><a href="kanri.php">管理人</a>
-      <ul class="sub-menu">
-        <li><a href="kanri.php">勤怠データ一覧</a></li>
-        <li><a href="keisan.php">給料清算</a></li>
-        <li><a href="kojin_ichiran">個人情報一覧</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="row">
 
 
 <?php
 require "dbasename.php";
+require "head.php";
 require "popup.php";
-
 if (isset($_POST['destroy'])){
     session_destroy();
 }
@@ -145,11 +117,11 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
    if($out1=="00:00:00"){ $out1="";$dis3="disabled";}else{$dis2="disabled";}
     if($in2=="00:00:00"){ $in2="";}else{$dis3="disabled";}
  if($out2=="00:00:00"){ $out2="";}else{$dis4="disabled";}
- if(isset($in1))echo "in1 co ton tai va bang".$in1;
 }
 }
-
-sw_get_current_weekday(); ?> || <span id="clock"></span>
+?>
+<div style="font-size:20px">
+<?php sw_get_current_weekday(); ?></div><span style="font-size:55px" id="clock"></span>
 <br>
    <form action="" method="POST">
     <input type="text" name="barcode"  class="barcodein radius" placeholder="パスコード入力" value="<?php echo $code; ?>"></input>
@@ -200,7 +172,7 @@ sw_get_current_weekday(); ?> || <span id="clock"></span>
     <div class="card">
       <h2>新着情報</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a href="shinchaku.php?number=new">新商品が発売</a></li>
+      <li><a href="shinshouhin.php">新商品が発売</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>

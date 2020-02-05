@@ -113,22 +113,41 @@ h2 {
     font-size: 22px;
 }
 table {
-    padding: 0;
   border-collapse: collapse;
   background-color: #B3E5FC;
 
+}
+.mess{
+  width:80%;
+  margin-left:100px; 
+}
+.mess td{
+    padding: 10px 0px;
+}
+.mess th{
+    padding: 15px 0px;
 }
 .maintable{
 width: 100%; 
 /*text-align: center;*/
   /*margin: 15px auto;*/
-  padding: 0;
+  padding: 3px;
   border-collapse: collapse;
 }
 .table{
   width: 100%;
+margin: 2px;
    /*font-size: 12px;*/
 }
+.table td{
+    padding: 4px 0px;
+}
+.table th{
+    padding: 4px 0px;
+
+   /*font-size: 12px;*/
+}
+
 a:link, a:visited {color: #844;}
 tr:hover{
   background: #FFFDE7;
