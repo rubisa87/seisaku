@@ -14,7 +14,10 @@ require "popup.php";
   <div class="leftcolumn">
     <div class="card">
 
-    <h3>この先新発売商品まだありません</h3>
+
+
+店長のコード:3 pass:1
+
 
 
 </div>

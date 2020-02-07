@@ -15,8 +15,6 @@
 
 </head>
 
-
-
 <?php
 require "dbasename.php";
 require "head.php";
@@ -172,7 +170,8 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
     <div class="card">
       <h2>新着情報</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a href="shinshouhin.php">新商品が発売</a></li>
+      <li><span style="background:yellow;color:red"><a href="shinchaku.php?number=setsumei">本サイトの使い方説明</a></span></li>
+      <li><a href="shinchaku.php?number=new">新商品が発売</a></li>
     </div>
     <div class="card">
       <h3>Popular Post</h3>

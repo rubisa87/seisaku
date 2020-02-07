@@ -51,10 +51,30 @@ require "popup.php";
 ?>
   <div class="leftcolumn">
     <div class="card">
-
-    <h3>記事の明細内容はまだありません</h3>
-
-
+<?php
+$number=$_GET['number'];
+switch ($number) {
+   case 'pop1':
+     # code...
+   echo "「QRコード決済導入について」　の詳細内容はありません";
+     break;
+   case 'pop2':
+     # code...
+      echo "「確定申告はもうすぐ締め切りで、早めにしてください」　の詳細内容はありません";
+     break;
+  case 'new':
+     # code...
+      echo "新発売商品　の詳細内容はありません";
+     break;
+  case 'setsumei':
+    # code...
+      echo "使い方の説明　の内容はありません";
+     break;
+   default:
+  echo "<h3>記事の詳細細内容はまだありません</h3>";
+     break;
+ }
+?>
 </div>
  </div>
   <div class="rightcolumn">
