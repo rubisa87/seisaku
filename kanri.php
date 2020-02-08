@@ -71,12 +71,14 @@ require "popup.php";
   ?>
  <div class="leftcolumn">
     <div class="card">
+     <div id="error"> <?php echo @$_GET['name']; ?> </div>
+
 <h2 style="color:#ffae6a" onclick ="chendau()" id ="theme2">
       <span id ="dau1">▼</span> 出勤実績<span id ="dau2">▼</span>
     </h2>
     <?php
 $m=False;
-
+// --------------------日付による検索ーーーーーーーーーーーーーーーーーーーーーー
     if(!isset($_POST["datesearch"])){
 
   $st = $pdo->query("SELECT * FROM kintaidata ");
@@ -94,6 +96,8 @@ $st->execute(array($kara,$made));
     if($m==True){
     echo "<p><br>".$kara."から";
 echo $made."まで</P>";}
+// --------------------日付による検索ー↑↑↑↑↑↑↑↑↑↑ーーーーーーーーーーーーーーーーーーーーー
+
     ?>
     
       <form method="POST">
@@ -197,6 +201,7 @@ while ($row = $stmt->fetch()) {
   </div>
 <div class="rightcolumn">
     <div class="card">
+      <p>管理人＞<span style="font-size:24px;color:#9400D3"><?php echo @$_SESSION['name'] ?></span>としてログインしています。</p>
       <h2>Menu</h2>
       <li><a href="#">勤怠データ</a></li>
       <li><a href="keisan.php">計算</a></li>

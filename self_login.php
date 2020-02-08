@@ -13,41 +13,19 @@
 
 
 </head>
-<body>
-
-<div class="header">
-  <h1>勤怠管理システム</h1>
-  <p>Tran Duc Anh</p>
-</div>
-
-<div id="menu">
-  <ul>
-    <li><a href="main.php">ホーム</a></li>
-    <li><a href="self.php">各自</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ</a></li>
-        <li><a href="#">給料</a></li>
-        <li><a href="#">個人情報確認</a></li>
-      </ul>
-      </li>
-    <li><a href="kanri.php">管理人</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ一覧</a></li>
-        <li><a href="#">給料清算</a></li>
-        <li><a href="#">個人情報</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
 <?php 
 require "dbasename.php";
-
+require "head.php";
 $page=@$_GET['page']; 
-
 $passcode=0;
-$pass="";
+$pass=$pagename="";
 $errormess="";
-
+if($page=="self"){
+$pagename='各自に';
+}else 
+if($page=="kanri"){
+$pagename='管理に';
+}
 if (isset($_POST["login"])) {
  $page = $_POST["page"];
     if (@($_POST["passcode"]) and @($_POST["pass"]) ) {
@@ -57,7 +35,6 @@ if (isset($_POST["login"])) {
    $stmt = $pdo->prepare('SELECT * FROM staffdata WHERE passcode = ?');
             $stmt->execute(array($passcode));
             $rows = $stmt->fetch();
-echo $rows['password'];
 if($page=="kanri"){
     if($passcode =="mise" &$pass =="8793"){
     $_SESSION['kanri']=True;
@@ -70,6 +47,7 @@ $errormess=$errormess."アクセス権限無効";
 
 }else if(($page=="self")&($pass==@$rows["password"])){
             $_SESSION['login']=True;
+            $_SESSION['name']=$rows["name"];
             $_SESSION['code']=$passcode;
             if($passcode==3){
                 $_SESSION['kanri']=True;
@@ -101,7 +79,7 @@ if (!empty($_SESSION['error2'])) {
 <div style="height:300px;">
     <div style="float:left;width: 24%;"> &nbsp</div>
     <div class="login">
-        <h2>ログイン</h2>
+        <h2><?php echo $pagename ?>ログイン</h2>
         <?php echo @$errormess;
         // echo $page;?>
         <form action="self_login.php" method="post" id="">

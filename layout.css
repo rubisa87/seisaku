@@ -57,6 +57,10 @@ h2 {
     text-align: center;
     font-size: 22px;
 }
+#touroku{
+      font-size: 22px;
+background:#fffa9094;
+}
 .radius{
         /*border: 2px solid #bbc5b1;*/
         -moz-border-radius: 10px;
@@ -64,6 +68,11 @@ h2 {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     border-radius: 10px;
+}
+#error{
+  color:red;
+  font-size: 18px;
+
 }
 .but{
   display: inline-block;

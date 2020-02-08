@@ -21,6 +21,7 @@ require "head.php";
 require "popup.php";
 if (isset($_POST['destroy'])){
     session_destroy();
+
 }
 
     function sw_get_current_weekday() {
@@ -62,7 +63,7 @@ if (isset($_POST['destroy'])){
     <div class="border in">
    <?php
     $check=null;
-    $name=$code=$aisatsu=$in1=$out1=$in2=$out2=   "";
+    $name=$code=$aisatsu=$in1=$out1=$in2=$out2= "";
 if (isset($_POST["codein"])) {
    $code= $_POST['barcode'];
   $st = $pdo->query("SELECT * FROM staffdata where passcode= '$code'");

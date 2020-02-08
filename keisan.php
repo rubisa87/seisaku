@@ -35,7 +35,7 @@ if ($val==0){
   ?>
  <div class="leftcolumn">
     <div class="card">
-<h2><br>
+<h2>
     給料計算実行
     </h2>
 

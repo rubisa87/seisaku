@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="uft-8">
-<meta http-equiv="refresh" content="2;URL=kanri.php">
+<!-- <meta http-equiv="refresh" content="2;URL=kanri.php"> -->
 <title>出勤管理</title>
 </head>
 <body>
@@ -14,10 +14,11 @@
 require "dbasename.php";
 
   $st = $pdo->prepare("UPDATE kintaidata SET date=?, passcode=?, name=?, sk=?, kkks=?, kksr=?, tk=? WHERE id=?");
-  $st->execute(array($_POST['date'],$_POST['passcode'],$_POST['name'], $_POST['sk'],$_POST['kkks'],$_POST['kksr'],$_POST['tk'],$_POST['id'],));
-require "kanri.php"; 
-echo "情報を修せしました。"
-?>
+  $st->execute(array($_POST['date'],$_POST['passcode'],$_POST['name'], $_POST['sk'],$_POST['kkks'],$_POST['kksr'],$_POST['tk'],$_POST['id']));
+   // $_SESSION['success']="勤怠データを修正しました。";
+    header("Location:kanri.php?name=勤怠データを修正しました");
+           exit();
+           ?>
 
 </body>
 </html>

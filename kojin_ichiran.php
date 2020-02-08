@@ -33,7 +33,7 @@ require "popup.php";
     </h2>
     <!-- <input  class="shinki radius" type= "submit" name="shinki" value="新規登録"> -->
 <table border="1" class="maintable">
-<tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>操作</th></tr>
+<tr><th>パスコード</th><th>名前</th><th>生年月日</th><th>電話番号</th><th>住所</th><th>入社日</th><th>地位</th><th>時給</th><th>責任手当</th><th>他手当</th><th>交通費</th><th>Pass</th><th>操作</th></tr>
 <?php
 
   $st = $pdo->query("SELECT * FROM staffdata");
@@ -50,7 +50,7 @@ require "popup.php";
     $teate = htmlspecialchars($row['teate']);
     $koutsuuhi = htmlspecialchars($row['koutsuuhi']);
 $passcode1=$passcode+1;
-    echo "<tr><td>$passcode</td><td>$name</td><td>$datebirth</td><td>$tell</td><td>$address</td><td>$incomdate</td><td>$chii</td><td>$jikyuu</td><td>$sekinin</td><td>$teate</td><td>$koutsuuhi</td><td><a href='user_update.php?code=$passcode '>修正</a></td></tr>
+    echo "<tr><td>$passcode</td><td>$name</td><td>$datebirth</td><td>$tell</td><td>$address</td><td>$incomdate</td><td>$chii</td><td>$jikyuu</td><td>$sekinin</td><td>$teate</td><td>$koutsuuhi</td><td>".$row['password']."</td><td><a href='user_update.php?code=$passcode '>修正</a></td></tr>
 ";
 
     // echo "<tr><td>$id</td><td>$name </td><td>$mail </td><td>$address </td><td>$phone </td><td><a href='user_update.php?name=$name '>修正</a><a href='user_delete.php?name=$name' onclick=\"return confirm('Mày định xoá thật à??')\">削除</a></td></tr>";
@@ -70,23 +70,26 @@ echo "<form><tr><td><input type='text' style='width:80px' name='passcode' placeh
 <td><input type='text' size='2' name='password' placeholder='password' value=''></td>
 
 </tr>"; 
-echo "<tr><td><button type = 'submit' formmethod='POST' name ='touroku' >登録</button></tr></form>";
+echo "<tr><th><button id='touroku' type = 'submit' formmethod='POST' name ='touroku' >登録</button></th></form>";
+echo "<form><th><button id='touroku' type = 'submit'　formaction='kojin_ichiran.php' >キャンセル</button></th></tr></form>";
+
+
  }else{
-  echo "<form><tr><td><button type = 'submit' formmethod='POST' name ='shinki' >新規</button></form></tr></form>";
+  echo "<form><th><button id='touroku' type = 'submit' formmethod='POST' name ='shinki' >新規</button></form></th></form>";
 
  }
  if(isset($_POST['touroku'])){
-echo "lay dc nut dki...............";
-echo $_POST['name'];//=====================den doan nay, con lai lam not phan ket noi dbs va chay lai trang=====
-echo $_POST['datebirth'];
-echo $_POST['tell'];
-echo $_POST['address'];
-echo $_POST['incomdate'];
-echo $_POST['chii'];
-echo $_POST['jikyuu'];
-echo $_POST['sekinin'];
-echo $_POST['teate'];
-echo $_POST['koutsuuhi'];
+// echo "lay dc nut dki...............";
+// echo $_POST['name'];//=====================den doan nay, con lai lam not phan ket noi dbs va chay lai trang=====
+// echo $_POST['datebirth'];
+// echo $_POST['tell'];
+// echo $_POST['address'];
+// echo $_POST['incomdate'];
+// echo $_POST['chii'];
+// echo $_POST['jikyuu'];
+// echo $_POST['sekinin'];
+// echo $_POST['teate'];
+// echo $_POST['koutsuuhi'];
 $stmt = $pdo->prepare("INSERT INTO staffdata(name, datebirth, tell, address,incomdate,chii,jikyuu,sekinin,teate,koutsuuhi,password) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
             $stmt->execute(array($_POST['name'],$_POST['datebirth'],$_POST['tell'],$_POST['address'],$_POST['incomdate'],$_POST['chii'],$_POST['jikyuu'],$_POST['sekinin'],$_POST['teate'],$_POST['koutsuuhi'],$_POST['password']));

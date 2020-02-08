@@ -100,20 +100,15 @@ if(isset($_POST['soushin'])){
 $from=$_POST['from'];
   $content=$_POST['content'];
   $name=$_POST['name'];
-    echo "from:".$from;
-  echo "<br>content:".$content;
 $st = $pdo->prepare("SELECT * FROM staffdata where name =?");
 $st->execute(array($name));
 $row = $st->fetch();
 $to=$row['passcode'];
-echo "<br>to:".$to;
 $stmt = $pdo->prepare("INSERT INTO messenger(fromusercode, tousercode, content, status) VALUES (?,?,?,'未読')");
 
             $stmt->execute(array($from,$to,$content));
 
 }
-
-
   ?>
   <br>
   <h2 style="color:#ffae6a" onclick ="chendau()" id="theme3">
@@ -164,6 +159,7 @@ while ($row = $stmt->fetch()) {
   </div>
 <div class="rightcolumn">
     <div class="card">
+      <p>各自＞<span style="font-size:24px;color:#9400D3"><?php echo $_SESSION['name'] ?></span>としてログインしています。</p>
       <h2>Menu</h2>
       <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
            <li><a href="self.php">勤怠</a></li>
