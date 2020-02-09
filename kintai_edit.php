@@ -3,14 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <title>打刻</title>
-<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
 <link rel="stylesheet" href="layout.css" type="text/css" />
-<!-- <link rel="stylesheet" href="shop.css"> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 
 </head>
 
@@ -67,22 +60,8 @@ require "popup.php";
   </div>
 
 
-<div class="rightcolumn">
-    <div class="card">
-      <h2>Menu</h2>
-      <li><a href="keisan.php">計算</a></li>
-    </div>
-    <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-    </div>
-    <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
-    </div>
-  </div>
+<?php require "rightcolumn_kanri.php";?>
+
 </div>
 <div class="footer">
     <li><a href="#">Contact</a></li>

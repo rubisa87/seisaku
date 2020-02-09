@@ -2,16 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>打刻</title>
-<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
+<title>個人情報</title>
 <link rel="stylesheet" href="layout.css" type="text/css" />
-<!-- <link rel="stylesheet" href="shop.css"> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!-- tao hieu ung an noi dung -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script>
   a1=a2=a3=0;
   str="\\\/";
@@ -45,37 +37,10 @@ $(document).ready(function(){
 
 
 </head>
-<body>
 
-<div class="header">
-  <h1>勤怠管理システム</h1>
-  <p>Tran Duc Anh</p>
-</div>
-
-<div id="menu">
-  <ul>
-    <li><a href="main.php">ホーム</a></li>
-    <li><a href="self.php">各自</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ</a></li>
-        <li><a href="#">給料</a></li>
-        <li><a href="#">個人情報確認</a></li>
-      </ul>
-      </li>
-    <li><a href="kanri.php">管理人</a>
-      <ul class="sub-menu">
-        <li><a href="#">勤怠データ一覧</a></li>
-        <li><a href="#">給料清算</a></li>
-        <li><a href="#">個人情報</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="row">
-  
 <?php
 require "dbasename.php";
+require "head.php";
 require "popup.php";
 
  if ($_SESSION['login']==False){
@@ -123,28 +88,8 @@ $passcode=@$_SESSION['code'];
 
 </div>
   </div>
-<div class="rightcolumn">
-    <div class="card">
-      <h2>Menu</h2>
-      <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-            <li><a href="self.php">勤怠</a></li>
-     <li><a href="mess.php">メッセージ</a></li>
-<li><a href="kojin.php">個人情報確認</a></li>
-<br>
-     <li><a href="logout.php?page=self">ログアウト</a></li>
+<?php require "rightcolumn_self.php";?>
 
-    </div>
-    <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-    </div>
-    <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
-    </div>
-  </div>
 </div>
 <div class="footer">
     <li><a href="#">Contact</a></li>

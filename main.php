@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
 <title>打刻</title>
-<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
 <link rel="stylesheet" href="layout.css" type="text/css" />
 <!-- <link rel="stylesheet" href="shop.css">
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -55,6 +54,21 @@ if (isset($_POST['destroy'])){
         echo $weekday.', '.date('Y年m月d日');
        // echo date('Y')- date('m');
     }
+// ---------------------------tao bo dem luot truy cap-------------------
+
+$countFile= "index.log";
+$CF = fopen($countFile,"r");
+$views=fread($CF,filesize($countFile));
+fclose($CF);
+$views++;
+$CF= fopen($countFile,"w");
+fwrite($CF, $views);
+fclose($CF);
+
+
+
+    // --------------------luot tuy cap /end ---------------------
+
 ?>
 
   <div class="leftcolumn">
@@ -209,9 +223,16 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
     
 </script>
 <div class="footer">
-    <li><a href="#">Contact</a></li>
+  <div style="width:20%;float:left">
+    訪問回数：<?php echo $views?>
 
+  </div>
+    
+  <div >
+    <li><a href="#">Contact</a></li>
   Copyright © 2019 Tran Duc Anh - 横浜システム工学院専門学校
+    </div>
+
 </div>
 
 </body>

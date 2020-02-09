@@ -65,14 +65,6 @@ $staff = $stmt->fetch();
 $ippan=$kinji*$staff['jikyuu'];
 $zangyoudai=$staff['jikyuu']*$zanji*0.25;
 $shinyadai=$shinyaji*$staff['jikyuu']*0.25;
-    // $kksr = htmlspecialchars($row['kksr']);
-    // $tk = htmlspecialchars($row['tk']);
- //    if($kkks=="00:00:00"){ $kkks="";}
- //   if($kksr=="00:00:00"){ $kksr="";}
- //    if($tk=="00:00:00"){ $tk="";}
- // if($sk=="00:00:00"){ $sk="";}
-    // echo "交通費：".$staff['koutsuuhi'];
-        // echo "時給：".$staff['jikyuu']."<br>";
 $koutsuuhi= $staff['koutsuuhi'];
    //print floorp(49.955, 2);
     $kyuji =floorp($kyuji, 2);
@@ -83,8 +75,8 @@ $shinyaji=floorp($shinyaji, 2);
 $zangyoudai=floorp($zangyoudai, 0);
 $shinyadai=floorp($shinyadai, 0);
 $nikkyu=no0($koutsuuhi +$ippan+$zangyoudai+$shinyadai);
- echo "<div><tr><th>$date</th><th>$passcode</th><th>$name</th><th>$kinji</th><th>".no0($kyuji)."</th>";
- echo "<th>".no0($zanji)."</th><th>".no0($shinyaji)."</th><th>$ippan</th><th>".no0($zangyoudai)."</th><th>".no0($shinyadai)."</th><th>$koutsuuhi</th><th>$nikkyu</th><th><a href='kintai_edit.php?id=$id '>修正</a></th></tr>";
+ echo "<div><tr><td>$date</td><td>$passcode</td><td>$name</td><td>$kinji</td><td>".no0($kyuji)."</td>";
+ echo "<td>".no0($zanji)."</td><td>".no0($shinyaji)."</td><td>$ippan</td><td>".no0($zangyoudai)."</td><td>".no0($shinyadai)."</td><td>$koutsuuhi</td><td>$nikkyu</td><td><a href='kintai_edit.php?id=$id '>修正</a></td></tr>";
     // echo "<div><tr><td>$date</td><td><input type='hidden' name='id' value=$id> $passcode</td><td>$name</td><td>$sk</td><td>$kkks</td><td>$kksr</td><td>$tk</td><td><a href='kintai_edit.php?id=$id '>修正</a></td></tr>";
 
   }
@@ -92,26 +84,8 @@ $nikkyu=no0($koutsuuhi +$ippan+$zangyoudai+$shinyadai);
 </table>
 </div>
 </div>
-<div class="rightcolumn">
-    <div class="card">
-      <h2>Menu</h2>
-      <!-- <div class="fakeimg" style="height:100px;">Image</div> -->
-      <li><a href="keisan.php">計算</a></li>
-            <li><a href="kanri.php">戻る</a></li>
-      <br><li><a href="logout.php?page=self">ログアウト</a></li>
+<?php require "rightcolumn_kanri.php";?>
 
-    </div>
-    <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-      <div class="fakeimg"><p>Image</p></div>
-    </div>
-    <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
-    </div>
-  </div>
 </div>
 </div>
 <div class="footer">
