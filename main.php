@@ -115,7 +115,7 @@ if (isset($_POST["tkin"])){
 $stmt = $pdo->query("UPDATE `kintaidata` SET tk=CURRENT_TIME WHERE date=CURRENT_DATE and passcode=$code");
 
     }
-    $aisatsu=$name."さん、<br>おはようございます。";
+    $aisatsu="<span style='color:red;''>".$name."</span>さん、<br>おはようございます。";
 
 $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcode=$code");
 

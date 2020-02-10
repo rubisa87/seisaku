@@ -8,9 +8,10 @@
   <p>Tran Duc Anh</p>
 </div>
 <div style="width:60%;float:left">
- <h1>　店舗コード：<?php echo $_SESSION['store_id'] ?><br>
-  店舗名：<?php echo $_SESSION['store_name'] ?>
- </h1> 
+ <h1>　店舗コード：<?php 
+ echo $_SESSION['store_id'] 
+ ?></h1>
+<h1> 店舗名：<?php echo $_SESSION['store_name'] ?> </h1> 
  </div>
 </div>
 
