@@ -19,7 +19,6 @@ require "dbasename.php";
 require "head.php";
 require "popup.php";
 if (isset($_POST['destroy'])){
-    session_destroy();
 
 }
 
@@ -169,10 +168,10 @@ $st = $pdo->query("SELECT * FROM kintaidata where date= CURRENT_DATE and passcod
     <input  class="butsize radius" <?php echo @$dis4 ;?> type= "submit" name="tkin" value="退勤">
 
     <br><br>
-        <input  class="butsize radius" type= "" name="skout" value="<?php echo $in1 ?> ">
-        <input  class="butsize radius" type= "" name="kkksout" value="<?php echo $out1 ?>">
-        <input  class="butsize radius" type= "" name="kksrout" value="<?php echo $in2 ?>">
-        <input  class="butsize radius" type= "" name="tkout" value="<?php echo $out2 ?>">
+        <input  class="butsize radius" type= "" name="skout" value="<?php echo $in1 ?> "disabled >
+        <input  class="butsize radius" type= "" name="kkksout" value="<?php echo $out1 ?>"disabled >
+        <input  class="butsize radius" type= "" name="kksrout" value="<?php echo $in2 ?>" disabled>
+        <input  class="butsize radius" type= "" name="tkout" value="<?php echo $out2 ?>" disabled>
         <br><br><br><br>
          <input  class="butsize radius" id ="destroy" type= "submit" name="destroy" value="終了">
 </form>

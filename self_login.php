@@ -11,6 +11,7 @@ require "dbasename.php";
 require "head.php";
 $page=@$_GET['page']; 
 $passcode=0;
+$store_id=$_SESSION['store_id'];
 $pass=$pagename="";
 $errormess="";
 if($page=="self"){
@@ -21,7 +22,7 @@ $pagename='管理に';
 }
 if (isset($_POST["login"])) {
  $page = $_POST["page"];
-    if (@($_POST["passcode"]) and @($_POST["pass"]) ) {
+    if ((@($_POST["passcode"]) and @($_POST["pass"])) or (@($_POST["pass"]) and $page="kanri") ) {
 
                $passcode = $_POST["passcode"];
         $pass = $_POST["pass"];
@@ -29,7 +30,10 @@ if (isset($_POST["login"])) {
             $stmt->execute(array($passcode));
             $rows = $stmt->fetch();
 if($page=="kanri"){
-    if($passcode =="mise" &$pass =="8793"){
+       $stmt = $pdo->prepare('SELECT * FROM store_list WHERE id = ?');
+            $stmt->execute(array($store_id));
+            $rows = $stmt->fetch();
+    if($pass ==$rows['kanri_pass']){
     $_SESSION['kanri']=True;
     header("Location: kanri.php");
            exit();
@@ -69,23 +73,27 @@ if (!empty($_SESSION['error2'])) {
 }
 
 ?>
-<div style="height:300px;">
+<div style="height:650px;">
     <div style="float:left;width: 24%;"> &nbsp</div>
     <div class="login">
-        <h2><?php echo $pagename ?>ログイン</h2>
+        <h1><?php echo $pagename ?>ログイン</h1>
         <?php echo @$errormess;
         // echo $page;?>
         <form action="self_login.php" method="post" id="">
             <p>
-                <input type='text' name="passcode" size='14' placeholder="Passcode">
+                <?php
+                if($page=="self"){
+            echo "<input  style= 'font-size:25px;margin-top:10px' type='text' name='passcode' size='14' placeholder='店員コード'>";
+                }
+?>
             </p>
             <p>
-                <input type='password' name='pass' size='14' maxlength='20'
-                    placeholder="Password">
+                <input  style= "font-size:25px;margin-top:10px" type='password' name='pass' size='14' maxlength='20'
+                    placeholder="パスワード">
                 <input type="hidden" name = "page" value =<?php echo $page ?> >
             </p>
             <p>
-                <button type="submit" formmethod="POST" name="login" value="1"
+                <button  style= "font-size:25px;margin-top:10px" type="submit" formmethod="POST" name="login" value="1"
                     id="button">OK</button>
             </p>
         </form>

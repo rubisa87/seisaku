@@ -22,7 +22,7 @@ h2 {
     /*clear: both;*/
   background-color: #b8c5b1;
         /*width: 670px;*/
-        height: 190px;
+        height: 300px;
         border: 1px solid #b8c5b1;
         -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -221,9 +221,12 @@ body {
 .header {
   padding: 10px;
   text-align: center;
+  height: 100px;
   /*background: #c0ffdd;*/
     background: white;
- background-image: url("background.jpg");
+ background-image: url("background.JPG");
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 

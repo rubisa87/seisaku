@@ -3,9 +3,15 @@
 <body>
 
 <div class='header'>
-  <h1>勤怠管理システム</h1>
+  <div style="width:30%;float:right">
+    <h1>勤怠管理システム</h1>
   <p>Tran Duc Anh</p>
- 
+</div>
+<div style="width:60%;float:left">
+ <h1>　店舗コード：<?php echo $_SESSION['store_id'] ?><br>
+  店舗名：<?php echo $_SESSION['store_name'] ?>
+ </h1> 
+ </div>
 </div>
 
 <div id='menu'>
