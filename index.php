@@ -86,26 +86,22 @@ if (!empty($_SESSION['error2'])) {
     <li>	</li>
   </ul>
 </div>
-<div class='card' style="height:700px;">
+<div class='card' style="height:800px;">
 
-<div style="height:300px;">
+<div >
     <div style="float:left;width: 24%;"> &nbsp</div>
     <div class="login">
-        <h1>店舗にログイン</h1>
+        <h1>店舗にログイン</h1><br>
         <?php echo @$errormess;
         // echo $page;?>
         <form action="index.php" method="post" id="">
-            <p>
                 <input style= "font-size:25px" type='text' name="tenpocode" size='14' placeholder="店舗コード">
-            </p>
-            <p>
+                <br>
                 <input style= "font-size:25px;margin-top:10px" type='password' name='tenpass' size='14' maxlength='20'
-                    placeholder="Password">
-            </p>
-            <p>
+                    placeholder="パスワード">
+                <br>
                 <button style= "font-size:25px;margin-top:10px" type="submit" formmethod="POST" name="login" value="1"
                     >ログイン</button>
-            </p>
         </form>
         <br><br>
         <p style="">アカウントをお持ちではない店舗は<a href="signUp.php">新店舗登録</a></p>

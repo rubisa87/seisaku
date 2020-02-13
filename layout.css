@@ -36,6 +36,25 @@ h2 {
     float:left;
   width: 50%;
 }
+.signup{
+    /*clear: both;*/
+    font-size:25px;
+  background-color: #b8c5b1;
+        /*width: 670px;*/
+        height: 800px;
+        border: 1px solid #b8c5b1;
+        -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 25px;
+        padding: 10px;
+            text-align: left;
+            /*top :800px;*/
+    float:left;
+  width: 50%;
+}
 .border{
     /*clear: both;*/
   background-color: #b8c5b1;

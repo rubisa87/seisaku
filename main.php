@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>打刻</title>
+<title>勤怠管理</title>
+
 <link rel="stylesheet" href="layout.css" type="text/css" />
 <!-- <link rel="stylesheet" href="shop.css">
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

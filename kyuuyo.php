@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>打刻</title>
+<title>各自ー勤怠</title>
 <link rel="stylesheet" href="layout.css" type="text/css" />
 </head>
 

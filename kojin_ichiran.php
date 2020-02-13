@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>従業員一覧</title>
+<title>管理ー勤怠</title>
 <link rel="stylesheet" href="layout.css" type="text/css" />
 
 </head>

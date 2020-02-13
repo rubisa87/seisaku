@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>個人情報</title>
+<title>個人情報ー勤怠管理</title>
 <link rel="stylesheet" href="layout.css" type="text/css" />
   <script>
   a1=a2=a3=0;

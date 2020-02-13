@@ -17,3 +17,4 @@ $pdo = new PDO("mysql:dbname=seisaku;charset=utf8", "root");
 // -------------------------↑↑↑↑↑↑↑↑↑↑↑↑↑↑settime zone↑↑↑↑↑↑↑↑↑↑↑↑↑↑ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
     ?>
+    <link rel="shortcut icon" type="image/x-icon" href="icon.png">

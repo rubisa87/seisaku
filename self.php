@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>打刻</title>
+<title>各自ー勤怠</title>
 <link rel="stylesheet" href="layout.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script><!-- tao hieu ung an noi dung -->
   <script>
